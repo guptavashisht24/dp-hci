@@ -1,0 +1,13 @@
+[
+    {
+        "name":"Walmart",
+        "img":"./images/walmart.jpeg"
+    },
+    {
+        "name":"Tom Thumb",
+        "img":"./images/target.jpeg"
+    },
+    {
+        "name":"Target"
+    }
+]
