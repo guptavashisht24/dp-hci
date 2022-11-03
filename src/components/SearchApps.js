@@ -85,18 +85,6 @@ function SearchApps(props){
                               </Popup>
                       </div>
                       </div>
-
-                    //     <div className="d-flex justify-content-center">
-                    //     <div className="card" style={{width: "18rem"}}>
-                    //      <img className="card-img-top" src={app.img}/>
-                    //         <div className="card-body">
-                    //          <p className="card-text">{app.title}</p>
-                    //             <Popup trigger={<button className="btn btn-primary">More Info</button>} position="right center">
-                    //                 <div>{app.desc}</div>
-                    //             </Popup>
-                    //         </div>
-                    //      </div>
-                    // </div>
                     )):<div style={{height:"100vh"}}></div>
                      
 }
