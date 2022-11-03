@@ -80,9 +80,9 @@ function SearchApps(props){
                         <div className="img-thumbnail" >
                           <img src={app.img} style={{height:"30px" ,width:"30px"}}/>
                         </div>
-                        <Popup trigger={<button className="btn btn-primary">More Info</button>} position="right center">
+                         <Popup trigger={<button className="btn btn-primary">More Info</button>} position="right center">
                                    <div>{app.desc}</div>
-                              </Popup>
+                              </Popup> 
                       </div>
                       </div>
                     )):<div style={{height:"100vh"}}></div>
@@ -92,7 +92,7 @@ function SearchApps(props){
                 </div>
                 <div className="footer bg-primary-blue py-3">
                 <div>
-                    <ul className="list-unstyled d-flex align-items-center  justify-content-around mb-0">
+                    <div className="list-unstyled d-flex align-items-center  justify-content-around mb-0">
                         <li>
                             <button><i style={{fontSize: "33px"}} className="bi bi-telephone-plus-fill"></i></button>
                         </li>
@@ -102,7 +102,7 @@ function SearchApps(props){
                         <li>
                           <Link to="/menu"><i style={{fontSize: "33px"}} className="bi bi-list"></i></Link>
                         </li>                
-            </ul>
+            </div>
                 </div>
             </div>
             
