@@ -20,8 +20,10 @@ function App() {
     <Routes>
       <Route path="/" element={<HomePage/>}/>
       <Route path="/menu" element={<Menu/>}/>
-      <Route path="/searchapps" element={<SearchApps/>}
-        apps={appsData}
+      <Route path="/searchapps" element={<SearchApps
+      apps={appsData}
+      />}
+        
       />
     </Routes>
   );

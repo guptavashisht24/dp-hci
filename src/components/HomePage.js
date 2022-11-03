@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 function HomePage(){
     return(
-        <div className="bg-dark" style={{maxWidth:"400px"}}>
+        <div className="bg-dark" style={{maxWidth:"400px",marginLeft:"500px"}}>
             <div className="section-wrapper mx-auto container bg-white">
         <div className="h-100 d-flex flex-column justify-content-between">
             <div className="header bg-primary-blue  px-2 py-2">
@@ -21,7 +21,7 @@ function HomePage(){
                 </h2>
             </div>
             <div className="search-sections">
-                <div className="searchApp d-flex align-items-center bg-gray mb-1">
+                <div className="searchApp d-flex align-items-center mb-1 bg-gray">
                    <Link to="/SearchApps" style={{ textDecoration: 'none' }}> <button className="form-control bg-gray border-0 py-4" style={{fontSize:"30px", textDecoration:"none"}}>Search an App
                     <i style={{marginLeft: "100px", fontSize: "40px"}} className="bi bi-search"></i></button></Link>
                 </div>

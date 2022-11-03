@@ -7,33 +7,46 @@ import DropdownButton from 'react-bootstrap/DropdownButton';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { Link } from "react-router-dom";
+import Popup from 'reactjs-popup';
+import 'reactjs-popup/dist/index.css';
+
 
 function SearchApps(props){
-    // const [formData,setFormData]=React.useState(
-    //     {
-    //       title:"Walmart",
-    //       img:""
-    //     }
-    //   )
-    //   const [appsList,setAppsList]=React.useState(props.apps)
-    //   function handle(){
-    //     setFormData(prevData=>prevData)
-    //   }
-    //   function searchAppList(){
-    //     let d=props.apps.filter((app)=>{
-    //         return (formData.title.length?app.title.toLowerCase().includes(formData.title.toLowerCase()):true)
-    //     })
-    //     setAppsList(d)
-    //   }
-    //   React.useEffect(() => {
-    //     searchAppList()
-    //   }, [formData.title])
-    const [modalShow, setModalShow] = React.useState(false);
+    const [formData,setFormData]=React.useState(
+        {
+          title:"",
+          img:"",
+          desc:""
+        }
+      )
+      const [appList,setAppList]=React.useState(props.apps)
+      function handle(e){
+        const {name,value}=e.target
+        setFormData(prevData=>{
+            return{
+                ...prevData,
+                [name]:value,
+            } 
+        })
+      }
+      function searchedAppList(){
+        let d=props.apps.filter((app)=>{
+            return (formData.title.length?app.title.toLowerCase().includes(formData.title.toLowerCase()):true)
+        })
+        console.log("d= ",d)
+        setAppList(d)
+      }
+      React.useEffect(() => {
+        searchedAppList()
+      }, [formData.title])
+    
+
+   
     
     return(
-        <div style={{maxWidth:"400px"}}>
+        <div style={{maxWidth:"400px",marginLeft:"500px",borderStyle:"solid",height:"100%"}}>
             <div className="d-flex justify-content-between header">
-                <button><i className="bi bi-backspace"></i></button>
+               <Link to="/"> <button><i className="bi bi-arrow-left"></i></button></Link>
                 <div style={{paddingTop:"10px"}}>V-Assist</div> 
             </div>
             <div className="d-flex flex-column">
@@ -43,7 +56,7 @@ function SearchApps(props){
                     placeholder="Search Apps"
                     aria-label="Recipient's username"
                     aria-describedby="basic-addon2"
-                    //onChange={handle}
+                    onChange={handle}
                     name="title"
                 />
                 <DropdownButton
@@ -57,61 +70,36 @@ function SearchApps(props){
         <Button><i className="bi bi-mic"></i></Button>
       </InputGroup>
                 </div>
-                {/* {appsList.length>0?
-                appsList.map((app)=>(
-                    <div>{app.title}</div>
-                ))
-                :<div>No app available</div>
-                }
-                     */}
 
                 <div className="d-flex flex-column">
-                     <div className="d-flex justify-content-center">
-                     <div className="card" style={{width: "18rem"}}>
-                        <img className="card-img-top" src="./walmart.jpeg"/>
-                        <div className="card-body">
-                        <p className="card-text">Walmart</p>
-                        <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
-                            Launch demo modal
-                        </button>
-                        <div className="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                        <div className="modal-dialog modal-dialog-centered" role="document">
-                        <div className="modal-content">
-                        <div className="modal-header">
-                        <h5 className="modal-title" id="exampleModalLongTitle">Modal title</h5>
-                        <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                        </button>
-      </div>
-      <div className="modal-body">
-        This is a grocery store
-      </div>
-      <div className="modal-footer">
-        <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" className="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
+                    {appList.length>0?
+                    appList.map((app)=>(
+                      <div className="d-flex flex-column" style={{height:"80px"}}>
+                      <div className="d-flex flex-row justify-content-around">
+                        <div>{app.title}</div>
+                        <div className="img-thumbnail" >
+                          <img src={app.img} style={{height:"30px" ,width:"30px"}}/>
                         </div>
-                    </div>
-                    </div>
-                    <div className="d-flex justify-content-center">
-                     <div className="card" style={{width: "18rem"}}>
-                        <img className="card-img-top" src="./target.jpeg" alt="Card image cap"/>
-                        <div className="card-body">
-                        <p className="card-text">Target</p>
-                        </div>
-                    </div>
-                    </div>
-                    <div className="d-flex justify-content-center">
-                     <div className="card" style={{width: "18rem"}}>
-                        <img className="card-img-top" src="./tom-thumb.png" alt="Card image cap"/>
-                        <div className="card-body">
-                        <p className="card-text">Tom Thumb</p>
-                        </div>
-                    </div>
-                    </div>
+                        <Popup trigger={<button className="btn btn-primary">More Info</button>} position="right center">
+                                   <div>{app.desc}</div>
+                              </Popup>
+                      </div>
+                      </div>
+
+                    //     <div className="d-flex justify-content-center">
+                    //     <div className="card" style={{width: "18rem"}}>
+                    //      <img className="card-img-top" src={app.img}/>
+                    //         <div className="card-body">
+                    //          <p className="card-text">{app.title}</p>
+                    //             <Popup trigger={<button className="btn btn-primary">More Info</button>} position="right center">
+                    //                 <div>{app.desc}</div>
+                    //             </Popup>
+                    //         </div>
+                    //      </div>
+                    // </div>
+                    )):<div style={{height:"100vh"}}></div>
+                     
+}
                 </div>
                 </div>
                 <div className="footer bg-primary-blue py-3">

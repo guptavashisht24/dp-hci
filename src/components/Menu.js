@@ -4,16 +4,12 @@ import { Link } from "react-router-dom";
 
 function Menu(){
     return(
-        <div className="bg-dark" style={{maxWidth:"400px"}}>
+        <div className="bg-dark" style={{maxWidth:"400px",marginLeft:"500px"}}>
             <div className="section-wrapper mx-auto container bg-white">
         <div className="h-100 d-flex flex-column justify-content-between">
-            <div classname="header bg-primary-blue d-flex align-items-center justify-content-between px-2 py-2">
-                <p className="mb-0 text-start">
-                    V-Assist
-                </p>
-                <a href="./homepage.html" className="text-black-50">
-                    <i className="bi bi-x-square"></i>
-                </a>
+        <div className="d-flex justify-content-between header">
+               <Link to="/"> <button><i className="bi bi-arrow-left"></i></button></Link>
+                <div style={{paddingTop:"10px"}}>V-Assist</div> 
             </div>
             <div className="search-general-info">
                 <div className="searchApp d-flex align-items-center flex-column py-4 bg-gray mb-1 px-2">
