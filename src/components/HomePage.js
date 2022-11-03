@@ -37,6 +37,7 @@ function HomePage() {
                             <div><i style={{ fontSize: "40px" }} className="bi bi-calendar3"></i></div>
                         </div>
                     </div>
+                    <div className="footer bg-primary-blue py-3">
                     <div>
                         <div className="list-unstyled d-flex align-items-center  justify-content-around mb-0">
                             <li>
@@ -49,7 +50,7 @@ function HomePage() {
                                 <Link to="/menu"><i style={{ fontSize: "33px" }} className="bi bi-list"></i></Link>
                             </li>
                         </div>
-                    </div>
+                    </div></div>
                 </div>
             </div>
         </div>
