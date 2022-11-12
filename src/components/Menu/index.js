@@ -5,9 +5,10 @@ import MenuImg from '../../images/menu.png'
 import Home from '../../images/home.png'
 import Call from '../../images/call.png'
 
-function Menu() {
+function Menu({ type }) {
+    const styleClassName = (type == "fixed")?"fixedMenu":"stickyMenu"
     return (
-        <div className="stickyMenu">
+        <div className={styleClassName}>
             <div className="menuflex">
                 <div className="menuDiv">
                     <img src={Call} />

@@ -2,9 +2,8 @@ import React from "react"
 import logo from './logo.svg';
 import './App.css';
 import './components/SearchApps'
-import SearchApps from "./components/SearchApps";
+import SearchList from "./pages/ListingPage";
 import HomePage from "./pages/HomePage";
-import Menu from "./components/Menu";
 import { Route, Routes } from "react-router-dom"
 
 function App() {
@@ -21,13 +20,8 @@ function App() {
       <div className="sub">
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/menu" element={<Menu />} />
-          <Route path="/searchapps" element={<SearchApps
-            apps={appsData}
-          />}
-          />
+          <Route path="/search" element={<SearchList/>}/>
         </Routes>
-        <Menu />
         </div>
     </div>
   );

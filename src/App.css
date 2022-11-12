@@ -1,7 +1,6 @@
 .App {
   margin: 0 auto;
-  max-width: 480px;
-  min-width: 280px !important;
+  max-width: 480px!important;
   height: -webkit-fill-available;
 }
 .sub{
