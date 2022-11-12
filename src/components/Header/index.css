@@ -1,0 +1,17 @@
+.menuflex {
+    display: flex;
+    justify-content: space-around;
+}
+
+.header {
+    background-color: #73ADD8;
+    height: 8vh;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 28px;
+    line-height: 34px;
+    padding-left: 20px;
+}

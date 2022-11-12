@@ -32,3 +32,27 @@ i{
 h2{
     font-size: 36px;
 }
+
+
+.menuflex{
+    display: flex;
+    justify-content: space-around;
+}
+
+.stickyMenu{
+    position: fixed;
+    bottom: 0px;
+    left: 0;
+    right: 0;
+    max-width: 480px;
+}
+
+.menuDiv{
+    background-color: #73ADD8;
+    height: 8.5vh;
+    width: 33.1%;
+    max-width: 160px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
