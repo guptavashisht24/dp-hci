@@ -1,5 +1,10 @@
 .App {
-  height: 100vh;
   margin: 0 auto;
   max-width: 480px;
+  min-width: 280px !important;
+  height: -webkit-fill-available;
+}
+.sub{
+  min-height: 100vh;
+  min-height: -webkit-fill-available;
 }

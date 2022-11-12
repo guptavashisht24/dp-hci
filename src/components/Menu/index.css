@@ -1,49 +1,9 @@
-.container{
-    max-width: 390px;
-    padding:0
-}
-.bg-primary-blue{
-    background-color: #87CEEB;
-    font-size: 23px;
-}
-.bg-gray{
-    background-color: #f4f4f4;
-    font-size: 26px;
-}
-i{
-    font-size: 30px;
-}
-.section-wrapper{
-    height: 100vh;
-}
-.footer ul li:not(:last-child):after {
-    content: '';
-    background: #000;
-    height: 100%;
-    position: absolute;
-    display: block;
-    top: 0;
-    width: 1px;
-    left: 70px;
-}
-.footer ul li{
-    position: relative;
-}
-h2{
-    font-size: 36px;
-}
-
-
 .menuflex{
     display: flex;
     justify-content: space-around;
 }
 
 .stickyMenu{
-    position: fixed;
-    bottom: 0px;
-    left: 0;
-    right: 0;
     max-width: 480px;
 }
 

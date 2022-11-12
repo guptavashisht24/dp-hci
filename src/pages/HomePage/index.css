@@ -1,12 +1,16 @@
 .introSection{
-    padding-top: 2vh;
     height: 35vh;
     font-size: 2.25rem;
     padding: 20px;
 }
 .pd{
     padding-top: 4vh;
-}
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;}
 .actions{
     display: flex;
     height: 15.67vh;

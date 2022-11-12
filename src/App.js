@@ -5,7 +5,6 @@ import './components/SearchApps'
 import SearchApps from "./components/SearchApps";
 import HomePage from "./pages/HomePage";
 import Menu from "./components/Menu";
-import Header from './components/Header';
 import { Route, Routes } from "react-router-dom"
 
 function App() {
@@ -19,16 +18,17 @@ function App() {
   }, [])
   return (
     <div className="App">
-      <Header />
-    <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/menu" element={<Menu />} />
-        <Route path="/searchapps" element={<SearchApps
-          apps={appsData}
-        />}
-        />
-    </Routes>
-    <Menu/>
+      <div className="sub">
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/menu" element={<Menu />} />
+          <Route path="/searchapps" element={<SearchApps
+            apps={appsData}
+          />}
+          />
+        </Routes>
+        <Menu />
+        </div>
     </div>
   );
 }

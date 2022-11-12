@@ -2,10 +2,13 @@ import React from "react";
 import './index.css'
 import { Link } from "react-router-dom";
 import Search from '../../images/search.png'
+import Header from '../../components/Header';
+
 
 function HomePage() {
     return (
         <div>
+            <Header />
             <div className="introSection">
                 <div>
                     Welcome

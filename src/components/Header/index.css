@@ -15,3 +15,10 @@
     line-height: 34px;
     padding-left: 20px;
 }
+.headerBack{
+    height: 8vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-style: normal;
+}
