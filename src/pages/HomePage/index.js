@@ -19,7 +19,7 @@ function HomePage() {
                     What can we help you with today ?
                 </div>
             </div>
-            <div>
+            <div className="mb">
                 <div className="actions">
                     <div>
                         Search An App
