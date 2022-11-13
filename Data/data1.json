@@ -1,0 +1,231 @@
+{
+    "Grocery":[
+        {
+            "title":"Walmart",
+            "img":"./Walmart.png",
+            "weburl":"https://www.walmart.com/"
+        },
+        {
+            "title":"Kroger",
+            "img":"./Kroger.png",
+            "weburl":"https://www.kroger.com/"
+        },
+        {
+            "title":"Target",
+            "img":"./Target.png",
+            "weburl":"https://www.target.com/"
+        },
+        {
+            "title":"Tom Thumb",
+            "img":"./Tom Thumb.png",
+            "weburl":"https://www.tomthumb.com/"
+        }
+    ],
+
+    "Pharmacy":[
+        {
+            "title":"CVS Pharmacy",
+            "img":"./CVS.png",
+            "weburl":"https://www.cvs.com/"
+        },
+        {
+            "title":"Walgreens",
+            "img":"./Walgreens.png",
+            "weburl":"https://www.walgreens.com/"
+        },
+        {
+            "title":"Medscape",
+            "img":"./Medscape.png",
+            "weburl":"https://www.medscape.com/"
+        },
+        {
+            "title":"HEB Pharmacy",
+            "img":"./HEB.png",
+            "weburl":"https://www.heb.com/pharmacy/common/landing"
+        },
+        {
+            "title":"Walmart Wellness",
+            "img":"./Walmart Pharmacy.png",
+            "weburl":"https://www.walmarthealth.com/"
+        }
+    ],
+
+    "Restaurant":[
+        {
+            "title":"Subway",
+            "img":"./wSubway.png",
+            "weburl":"https://order.subway.com/en-US"
+        },
+        {
+            "title":"Whataburger",
+            "img":"./Whataburger.png",
+            "weburl":"https://whataburger.com/"
+        },
+        {
+            "title":"Chick-fil-A",
+            "img":"./Chickfila.png",
+            "weburl":"https://www.chick-fil-a.com/"
+        },
+        {
+            "title":"Panda Express",
+            "img":"./Panda Express.png",
+            "weburl":"https://www.pandaexpress.com/"
+        },
+        {
+            "title":"Pizza Hut",
+            "img":"./Pizza Hut.png",
+            "weburl":"https://www.pizzahut.com/"
+        }
+    ],
+
+    "Coffee shops":[
+        {
+            "title":"Starbucks",
+            "img":"./Starbucks.png",
+            "weburl":"https://www.starbucks.com/"
+        },
+        {
+            "title":"Dunkin",
+            "img":"./Dukin.png",
+            "weburl":"https://www.dunkindonuts.com/"
+        },
+        {
+            "title":"Dutch Bros",
+            "img":"./Dutch Bros.png",
+            "weburl":"https://www.dutchbros.com/"
+        },
+        {
+            "title":"Joe Coffee",
+            "img":"./Joe.png",
+            "weburl":"https://joe.coffee/"
+        },
+        {
+            "title":"Dunn Brothers",
+            "img":"./Dunn Brothers.png",
+            "weburl":"https://dunnbrothers.com/"
+        }
+    ],
+
+    "Bank":[
+        {
+            "title":"Chase",
+            "img":"./Chase.png",
+            "weburl":"https://www.chase.com/"
+        },
+        {
+            "title":"Bank of America",
+            "img":"./Bofa.png",
+            "weburl":"https://www.bankofamerica.com/"
+        },
+        {
+            "title":"Wells Fargo",
+            "img":"./Wells Fargo.png",
+            "weburl":"https://www.wellsfargo.com/"
+        },
+        {
+            "title":"Bank of Texas",
+            "img":"./Bank of Texas.png",
+            "weburl":"https://www.bankoftexas.com/"
+        },
+        {
+            "title":"Truist",
+            "img":"./Truist.png",
+            "weburl":"https://www.truist.com/"
+        }
+    ],
+
+    "Social media":[
+        {
+            "title":"Instagram",
+            "img":"./Instagram.jpeg",
+            "weburl":"https://www.instagram.com/"
+        },
+        {
+            "title":"Whatsapp",
+            "img":"./Whatsapp.png",
+            "weburl":"https://www.whatsapp.com/"
+        },
+        {
+            "title":"Twitter",
+            "img":"./Twitter.png",
+            "weburl":"https://twitter.com/"
+        },
+        {
+            "title":"Snapchat",
+            "img":"./Snapchat.png",
+            "weburl":"https://www.snapchat.com/en-US/"
+        },
+        {
+            "title":"Youtube",
+            "img":"./Youtube.png",
+            "weburl":"https://www.youtube.com/"
+        },
+        {
+            "title":"Facebook",
+            "img":"./Facebook.jpeg",
+            "weburl":"https://www.facebook.com/"
+        },
+        {
+            "title":"Tik Tok",
+            "img":"./Tik tok.png",
+            "weburl":"https://www.tiktok.com/en/"
+        }
+    ],
+    
+    "Transport":[
+        {
+            "title":"Uber",
+            "img":"./Uber.png",
+            "weburl":"https://www.uber.com/"
+        },
+        {
+            "title":"Lyft",
+            "img":"./Lyft.png",
+            "weburl":"https://www.lyft.com/"
+        },
+        {
+            "title":"Hitch",
+            "img":"./Hitch.png",
+            "weburl":"https://www.ridehitch.com/"
+        },
+        {
+            "title":"Greyhound",
+            "img":"./Greyhound.png",
+            "weburl":"https://www.greyhound.com/en"
+        },
+        {
+            "title":"redbus",
+            "img":"./Redbus.png",
+            "weburl":"https://www.redbus.in/"
+        }
+    ],
+
+    "Online shopping":[
+        {
+            "title":"Amazon",
+            "img":"./Amazon.png",
+            "weburl":"https://www.amazon.com/"
+        },
+        {
+            "title":"Bestbuy",
+            "img":"./Bestbuy.png",
+            "weburl":"https://www.bestbuy.com/"
+        },
+        {
+            "title":"ebay",
+            "img":"./Ebay.png",
+            "weburl":"https://www.ebay.com/"
+        },
+        {
+            "title":"Costco",
+            "img":"./Costco.png",
+            "weburl":"https://www.costco.com/"
+        },
+        {
+            "title":"Ikea",
+            "img":"./Ikea.png",
+            "weburl":"https://www.ikea.com/us/en/"
+        }
+    ]
+    
+}
