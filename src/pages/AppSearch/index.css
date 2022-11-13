@@ -41,3 +41,7 @@ input[type=text]{
 .w75{
     max-width: 75%;
 }
+
+.pb8{
+    padding-bottom: 8vh;
+}

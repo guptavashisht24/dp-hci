@@ -6,7 +6,11 @@ import AppSearch from "./pages/AppSearch";
 import HomePage from "./pages/HomePage";
 import Tutorials from "./pages/Tutorials"
 import User from "./pages/User";
+import Sessions from "./pages/User/existing"
+import Confirm from "./pages/User/confirm"
 import { Route, Routes } from "react-router-dom"
+import Login from "./pages/Login"
+
 
 function App() {
   const [appsData, setAppsData] = React.useState([])
@@ -26,6 +30,9 @@ function App() {
           <Route path="/tutorials" element={<Tutorials/>}/>
           <Route path="/session" element={<Tutorials/>}/>
           <Route path="/user" element={<User/>}/>
+          <Route path="/sessions" element={<Sessions/>}/>
+          <Route path="/confirm" element={<Confirm/>}/>
+          <Route path="/login" element={<Login />} />
         </Routes>
         </div>
     </div>

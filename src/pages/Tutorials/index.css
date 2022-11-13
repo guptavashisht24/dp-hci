@@ -67,3 +67,7 @@ input[type=text]{
     overflow: hidden;
     text-overflow: ellipsis;
 }
+
+.pb8{
+    padding-bottom: 8vh;
+}

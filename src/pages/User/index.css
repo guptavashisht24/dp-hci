@@ -1,4 +1,4 @@
-.choice{
+.choice {
     display: flex;
     height: 15.67vh;
     background-color: blue;
@@ -12,13 +12,69 @@
     margin: 0 auto;
     text-align: center;
 }
-.userOptions{
+
+.userOptions {
     display: flex;
     flex-direction: column;
     height: 70%;
     justify-content: space-around;
 }
 
-.menuPg{
+.menuPg {
     height: 92vh;
+}
+
+.sessionList {
+    text-align: center;
+    font-size: 1.5rem;
+    margin-bottom: 1vh;
+}
+
+.sessionItem {
+    font-size: 1rem;
+    background: rgba(104, 124, 103, 0.16);
+    margin-bottom: 0.5vh;
+    width: 95%;
+    margin: 0 auto;
+    padding-left: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-bottom: 1vh;
+}
+.flx{
+    display: flex;
+}
+
+.w30 {
+    width: 20%;
+}
+
+.w70 {
+    width: 70%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.parentList{
+    margin-bottom : 3vh;
+}
+.pb8{
+    padding-bottom: 8vh;
+}
+.image{
+    display: flex;
+    justify-content: center;
+    margin-top: 15vh;
+}
+.text{
+    text-align: center;
+    font-size: 1.5rem;
+}
+.instructions{
+    padding-top: 10vh;
+    text-align: center;
+    padding-left: 5vh;
+    padding-right: 5vh;
+    font-size:1.1rem ;
 }

@@ -10,7 +10,7 @@ import YouTube from '../../images/youtube.png'
 
 function AppSearch() {
     return (
-        <div>
+        <div className="pb8">
             <Header />
             <div className="">
                 <div className="search">

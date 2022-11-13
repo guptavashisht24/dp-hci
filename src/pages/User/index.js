@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import Header from '../../components/Header';
 import Menu from '../../components/Menu'
 
-function HomePage() {
+function User() {
     return (
         <div className="menuPg">
             <Header type="back" />
@@ -27,4 +27,4 @@ function HomePage() {
     )
 }
 
-export default HomePage;
+export default User;
