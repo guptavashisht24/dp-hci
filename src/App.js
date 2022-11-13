@@ -5,6 +5,7 @@ import './components/SearchApps'
 import AppSearch from "./pages/AppSearch";
 import HomePage from "./pages/HomePage";
 import Tutorials from "./pages/Tutorials"
+import User from "./pages/User";
 import { Route, Routes } from "react-router-dom"
 
 function App() {
@@ -23,6 +24,8 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/search" element={<AppSearch/>}/>
           <Route path="/tutorials" element={<Tutorials/>}/>
+          <Route path="/session" element={<Tutorials/>}/>
+          <Route path="/user" element={<User/>}/>
         </Routes>
         </div>
     </div>

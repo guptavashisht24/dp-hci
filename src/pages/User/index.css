@@ -1,0 +1,24 @@
+.choice{
+    display: flex;
+    height: 15.67vh;
+    background-color: blue;
+    justify-content: center;
+    font-size: 2rem;
+    align-items: center;
+    background: rgba(104, 124, 103, 0.16);
+    padding: 20px;
+    margin-bottom: 0.5vh;
+    width: 90%;
+    margin: 0 auto;
+    text-align: center;
+}
+.userOptions{
+    display: flex;
+    flex-direction: column;
+    height: 70%;
+    justify-content: space-around;
+}
+
+.menuPg{
+    height: 92vh;
+}
