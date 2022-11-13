@@ -2,8 +2,9 @@ import React from "react"
 import logo from './logo.svg';
 import './App.css';
 import './components/SearchApps'
-import SearchList from "./pages/ListingPage";
+import AppSearch from "./pages/AppSearch";
 import HomePage from "./pages/HomePage";
+import Tutorials from "./pages/Tutorials"
 import { Route, Routes } from "react-router-dom"
 
 function App() {
@@ -20,7 +21,8 @@ function App() {
       <div className="sub">
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/search" element={<SearchList/>}/>
+          <Route path="/search" element={<AppSearch/>}/>
+          <Route path="/tutorials" element={<Tutorials/>}/>
         </Routes>
         </div>
     </div>
