@@ -20,7 +20,7 @@ input[type=text]{
     height: 8vh;
     align-items: center;
 }
-.actions{
+.actionsTutorials{
     display: flex;
     height: 10.67vh;
     background-color: blue;
@@ -67,4 +67,3 @@ input[type=text]{
     overflow: hidden;
     text-overflow: ellipsis;
 }
-a:link {color: inherit; text-decoration: none; }

@@ -17,7 +17,7 @@ function AppSearch() {
                     <div className="w75">
                         <input type="text"></input>
                     </div>
-                    <div class="w20">
+                    <div className="w20">
                     <img src={Microphone} />  
                     </div>
                 </div>

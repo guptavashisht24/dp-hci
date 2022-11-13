@@ -23,7 +23,7 @@ function AppSearch() {
                 </div>
             </div>
             <div className="results">
-                <div className="actions">
+                <div className="actionsTutorials">
                     <a href="#">
                         <div className="list">
                             <div className="icon">
@@ -36,7 +36,7 @@ function AppSearch() {
                     </a>
                 </div>
                 
-                <div className="actions">
+                <div className="actionsTutorials">
                     <a href="#">
                         <div className="list">
                             <div className="icon">
@@ -48,7 +48,7 @@ function AppSearch() {
                         </div>
                     </a>
                 </div>
-                <div className="actions">
+                <div className="actionsTutorials">
                     <a href="#">
                         <div className="list">
                             <div className="icon">
@@ -60,14 +60,14 @@ function AppSearch() {
                         </div>
                     </a>
                 </div>
-                <div className="actions">
+                <div className="actionsTutorials">
                     <a href="#">
                         <div className="list">
                             <div className="icon">
                                 <img src={YouTube} />
                             </div>
                             <div className="content">
-                                Walmart Grocery pickup skdfjkdsfj sdkfjksdjf sdkfjkdsjfkdfjksdjf ds,kfjkdsjfkdsjfkdjfkdsjf
+                                Walmart value pickup
                             </div>
                         </div>
                     </a>

@@ -7,3 +7,8 @@
   min-height: 100vh;
   min-height: -webkit-fill-available;
 }
+
+a, a:visited, a:hover, a:active {
+  color: inherit !important;
+  text-decoration: none !important;
+}
