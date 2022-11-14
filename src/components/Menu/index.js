@@ -63,7 +63,7 @@ function Menu({ type }) {
                     <div className="menuDiv" onClick={() => { toggleMenu(!showMenu) }}>
                     <i class="bi bi-list icon-style-footer"></i>
                         {/* <img src={MenuImg} /> */}
-                    </div>
+                    </div>  
                 </div>
             </div>
         </div>
