@@ -9,6 +9,7 @@ import Confirm from "./pages/User/confirm"
 import NoMobile from "./components/NoMobile"
 import { Route, Routes } from "react-router-dom"
 import Login from "./pages/Login"
+import Edit from "./pages/User/edit"
 import { useMediaQuery } from "react-responsive"
 import Registration from "./pages/Registration"
 
@@ -40,6 +41,7 @@ function App() {
           <Route path="/confirm" element={<Confirm/>}/>
           <Route path="/registration" element={<Registration/>}/>
           <Route path="/login" element={<Login />} />
+          <Route path="/edit/:id" element={<Edit />} />
         </Routes>
         </div>
     </div>
