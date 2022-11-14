@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import './index.css'
 import { Link } from "react-router-dom";
 import Search from '../../images/search.png'
@@ -6,10 +6,18 @@ import Video from '../../images/video.png'
 import Header from '../../components/Header';
 import Time from '../../images/time.png'
 import Menu from '../../components/Menu'
-import ReactTooltip from "react-tooltip";
-
+import Onboard from "../../components/Onboard";
 
 function HomePage() {
+    const [showOnboard, toggleOnboard] = useState(false)
+
+    useEffect(()=>{
+        if(!localStorage.getItem("show")){
+            setTimeout(()=>{
+                toggleOnboard(true)
+            }, 1000)
+        }
+    })
     return (
         <div>
             <Header />
@@ -21,6 +29,7 @@ function HomePage() {
                     What can we help you with today ?
                 </div>
             </div>
+            {showOnboard && <Onboard hide = {toggleOnboard} />}
             <div className="mb">
                 <Link to="/search">
                     <div className="actions" data-tip data-for="searchApp">
@@ -31,9 +40,7 @@ function HomePage() {
                             <img src={Search} />
                         </div>
                     </div>
-                    <ReactTooltip id="searchApp" place="top" effect="solid">
-                        Click here to search apps for a particular tasks
-                    </ReactTooltip>
+                  
                 </Link>
                 <div>
                     <Link to="/tutorials">
@@ -45,9 +52,7 @@ function HomePage() {
                                 <img src={Video} />
                             </div>
                         </div>
-                        <ReactTooltip id="searchVideos" place="top" effect="solid">
-                        Click here to search video tutorials for common apps
-                    </ReactTooltip>
+                        
                     </Link>
                 </div>
                 <div>
@@ -60,9 +65,7 @@ function HomePage() {
                                 <img src={Time} />
                             </div>
                         </div>
-                        <ReactTooltip id="searchVideos" place="top" effect="solid">
-                         Schedule a session with volunteers for understanding how apps work
-                    </ReactTooltip>
+                     
                     </Link>
                 </div>
             </div>
