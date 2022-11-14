@@ -6,11 +6,16 @@ import Tutorials from "./pages/Tutorials"
 import User from "./pages/User";
 import Sessions from "./pages/User/existing"
 import Confirm from "./pages/User/confirm"
+import NoMobile from "./components/NoMobile"
 import { Route, Routes } from "react-router-dom"
 import Login from "./pages/Login"
+import { useMediaQuery } from "react-responsive"
+
 
 
 function App() {
+  const isMobile = useMediaQuery({ maxWidth: 480 })
+  console.log(isMobile)
   const [appsData, setAppsData] = React.useState([])
   React.useEffect(() => {
     fetch('./apps.json')
@@ -19,6 +24,9 @@ function App() {
         setAppsData(data)
       })
   }, [])
+
+  if(!isMobile)
+    return <NoMobile />
   return (
     <div className="App">
       <div className="sub">
