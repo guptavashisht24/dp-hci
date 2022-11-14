@@ -13,7 +13,7 @@
     text-overflow: ellipsis;}
 .actions{
     display: flex;
-    height: 15.67vh;
+    height: 13.67vh;
     background-color: blue;
     justify-content: space-between;
     font-size: 2rem;
