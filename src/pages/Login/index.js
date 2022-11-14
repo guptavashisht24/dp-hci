@@ -30,21 +30,25 @@ function SessionList() {
     const addData=(e)=>{
         e.preventDefault();
 
-        const getuserArr=localStorage.getItem("user")
-        console.log(getuserArr);
+        const getuserArr=localStorage.getItem("data")
+    //    console.log(getuserArr);
+        
 
         const {phoneNumber,password}=formData
 
        if(phoneNumber===""){
-            alert('Phone Number is required')
+            document.getElementById('error_phno').innerHTML="Phone Number is required";
         }
         else if(password===""){
-            alert('Password is required')
+          
+            document.getElementById('error_pwd').innerHTML="Password is required";
         }
         else{
           if(getuserArr && getuserArr.length){
-            const userdata=JSON.parse(getuserArr)
-            const userlogin=userdata.filter((el,k)=>{
+            const user=JSON.parse(getuserArr.userData.sessions.info)
+            console.log(user)
+            const arr=user.userData
+            const userlogin=arr.filter((el,k)=>{
                 return el.phoneNumber===phoneNumber && el.password===password
             })
             if(userlogin.length===0){
@@ -52,6 +56,11 @@ function SessionList() {
             }
             else{
                 alert("user login successfull");
+                // localStorage.setItem("data",JSON.stringify({
+                //     userData:{
+                //             "sessions":[{"sessionid":id+1,...userdata}]
+                //     }
+                // }))
             }
           }
         }
@@ -70,6 +79,7 @@ function SessionList() {
                             name='phoneNumber'
                          onChange={handle}
                         />
+                        <span id="error_phno" style={{color:'red'}}></span>
                     </div>
                 </div>
                 <div className="rows">
@@ -79,6 +89,7 @@ function SessionList() {
                         name='password'
                         onChange={handle}
                         />
+                        <span id="error_pwd" style={{color:'red'}}></span>
                     </div>
                 </div>
                

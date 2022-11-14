@@ -11,7 +11,7 @@ function User() {
             <div className="userOptions">
                 <div className="choice">
                     <div >
-                        New Session
+                        <Link to="/registration">New Session</Link>
                     </div>
                 </div>
                 <div>
