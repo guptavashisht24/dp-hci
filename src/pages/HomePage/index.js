@@ -5,12 +5,15 @@ import Search from '../../images/search.png'
 import Video from '../../images/video.png'
 import Header from '../../components/Header';
 import Time from '../../images/time.png'
-import Menu from '../../components/Menu'
+import Menu from '../../components/Menu';
+
 
 function HomePage() {
     return (
         <div>
             <Header />
+            
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
             <div className="introSection">
                 <div>
                     Welcome
@@ -26,7 +29,8 @@ function HomePage() {
                         Search An App
                     </div>
                     <div>
-                        <img src={Search} />
+                    <i class="bi bi-search icon-style"></i>
+                        {/* <img src={Search} /> */}
                     </div>
                 </div>
                 </Link>
@@ -37,7 +41,8 @@ function HomePage() {
                             Search Tutorials
                         </div>
                         <div>
-                            <img src={Video} />
+                        <i class="bi bi-collection-play icon-style"></i>
+                            {/* <img src={Video} /> */}
                         </div>
                     </div>
                 </Link>
@@ -49,7 +54,8 @@ function HomePage() {
                             Schedule a Session
                         </div>
                         <div>
-                            <img src={Time} />
+                        <i class="bi bi-calendar2-check icon-style"></i>
+                            {/* <img src={Time} /> */}
                         </div>
                     </div>
                 </Link>

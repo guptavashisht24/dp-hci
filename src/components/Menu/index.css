@@ -43,3 +43,38 @@
     align-items: center;
     background: rgba(104, 124, 103, 0.16);
 }
+
+.icon-style-heart{
+    font-weight:700 !important;
+    color:#ff0000 !important;
+    font-size:40px !important;
+
+}
+
+.icon-style-person{
+    font-weight:700 !important;
+    color:#555555 !important;
+    font-size:40px !important;
+
+}
+
+.icon-style-faq{
+    font-weight:700 !important;
+    color:#1870d5 !important;
+    font-size:40px !important;
+
+}
+
+.icon-style-about{
+    font-weight:700 !important;
+    color:#357a38 !important;
+    font-size:40px !important;
+
+}
+
+.icon-style-footer{
+    font-weight:700 !important;
+    color:#000000 !important;
+    font-size:50px !important;
+
+}
