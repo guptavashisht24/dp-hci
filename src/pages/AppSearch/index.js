@@ -18,6 +18,8 @@ function AppSearch() {
     const [loaders, updateLoaders] = useState(false)
     const [result, updateResult] = useState([])
 
+    const SpeechRecognitionWorks = window.SpeechRecognition || window.webkitSpeechRecognition;
+
     const GetSpeech = () => {
         const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 
@@ -108,9 +110,9 @@ function AppSearch() {
                         <input type="text" placeholder="Type Something" value={search} onChange={event => setSearch(event.target.value)}></input>
                         </form>
                     </div>
-                    <div className="w20" onClick={()=>{GetSpeech()}}>
+                    {SpeechRecognitionWorks && <div className="w20" onClick={()=>{GetSpeech()}}>
                         <img src={Microphone} />
-                    </div>
+                    </div>}
                 </div>
                 {display && <div className="autoContainer">
                     {options.filter((name) => {
