@@ -66,8 +66,17 @@ input[type=text]{
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
+    padding-left : 4vh;
 }
 
 .pb8{
     padding-bottom: 8vh;
+}
+
+.loaderDiv{
+    background-color: rgba(104, 124, 103, 0.16);
+    height: 10.67vh;
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 1vh;
 }
