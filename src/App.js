@@ -1,23 +1,38 @@
-import logo from './logo.svg';
+import React from "react"
 import './App.css';
+import AppSearch from "./pages/AppSearch";
+import HomePage from "./pages/HomePage";
+import Tutorials from "./pages/Tutorials"
+import User from "./pages/User";
+import Sessions from "./pages/User/existing"
+import Confirm from "./pages/User/confirm"
+import { Route, Routes } from "react-router-dom"
+import Login from "./pages/Login"
+
 
 function App() {
+  const [appsData, setAppsData] = React.useState([])
+  React.useEffect(() => {
+    fetch('./apps.json')
+      .then(res => res.json())
+      .then((data) => {
+        setAppsData(data)
+      })
+  }, [])
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="sub">
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/search" element={<AppSearch/>}/>
+          <Route path="/tutorials" element={<Tutorials/>}/>
+          <Route path="/session" element={<Tutorials/>}/>
+          <Route path="/user" element={<User/>}/>
+          <Route path="/sessions" element={<Sessions/>}/>
+          <Route path="/confirm" element={<Confirm/>}/>
+          <Route path="/login" element={<Login />} />
+        </Routes>
+        </div>
     </div>
   );
 }
