@@ -12,10 +12,10 @@
   "static/media/target.png": "/hci-dp/static/media/target.3d497d30.png",
   "static/media/tomthumb.png": "/hci-dp/static/media/tomthumb.3e41a452.png",
   "static/media/walmart.png": "/hci-dp/static/media/walmart.17635fba.png",
-  "static/media/bootstrap-icons.css": "/hci-dp/static/media/bootstrap-icons.be6df3f0.woff",
-  "static/css/2.cd450529.chunk.css.map": "/hci-dp/static/css/2.cd450529.chunk.css.map",
+  "static/media/bootstrap-icons.css": "/hci-dp/static/media/bootstrap-icons.31e1300d.woff2",
   "static/css/main.b0a00ebb.chunk.css.map": "/hci-dp/static/css/main.b0a00ebb.chunk.css.map",
+  "static/css/2.cd450529.chunk.css.map": "/hci-dp/static/css/2.cd450529.chunk.css.map",
   "index.html": "/hci-dp/index.html",
-  "precache-manifest.f78ab4e5fa5bf24ea5ee8e90e0f9eaa9.js": "/hci-dp/precache-manifest.f78ab4e5fa5bf24ea5ee8e90e0f9eaa9.js",
+  "precache-manifest.5ac66a8c0f11cd31b621d07d767c23a0.js": "/hci-dp/precache-manifest.5ac66a8c0f11cd31b621d07d767c23a0.js",
   "service-worker.js": "/hci-dp/service-worker.js"
 }

@@ -36,12 +36,12 @@ self.__precacheManifest = [
     "url": "/hci-dp/static/media/walmart.17635fba.png"
   },
   {
-    "revision": "31e1300d419245fd27614630601dc74d",
-    "url": "/hci-dp/static/media/bootstrap-icons.31e1300d.woff2"
-  },
-  {
     "revision": "be6df3f0c9855796ae0c099ee4ca43ce",
     "url": "/hci-dp/static/media/bootstrap-icons.be6df3f0.woff"
+  },
+  {
+    "revision": "31e1300d419245fd27614630601dc74d",
+    "url": "/hci-dp/static/media/bootstrap-icons.31e1300d.woff2"
   },
   {
     "revision": "94fc595cc9766c85c77e43398e51b3bc",
