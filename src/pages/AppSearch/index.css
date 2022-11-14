@@ -1,6 +1,4 @@
-img{
-    max-width: 100%;
-} 
+
 input[type=text]{
     height: 7vh;
     font-size: 2rem;
@@ -34,7 +32,8 @@ input[type=text]{
 }
 .brandsCol{
  display: flex;
- justify-content: center;   
+ justify-content: center;  
+ margin-top: 2vh; 
 }
 .w20{
     width: 20%;
@@ -62,4 +61,28 @@ input[type=text]{
     display: flex;
     justify-content: center;
     align-items: center;
+}
+.loaderDiv{
+    background-color: rgba(104, 124, 103, 0.16);
+    height: 7vh;
+    width: 90%;
+    margin: 0 auto;
+    height: 18vh;
+    margin-top: 1vh;
+}
+.brand{
+height: 16vh;
+object-fit: contain;
+width: 90%;
+}
+
+.parent{
+    text-align: center;
+}
+.failText{
+    text-align: center;
+    font-size: 2.5em;
+    display: flex;
+    justify-content: center;
+    margin-top: 25vh;
 }
