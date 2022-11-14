@@ -91,7 +91,7 @@ function AppSearch() {
         return results
        } else {
         if(search.length===0){
-            return <div className="failText"> What are you looking for, today ?</div>
+            return <div className="failText"> What are you looking for today ?</div>
         } else {
             return <div className="failText">Hmm, Apps not found :/, Try Something else</div>
         }
