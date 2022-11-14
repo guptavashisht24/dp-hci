@@ -20,7 +20,7 @@ function HomePage() {
     })
     return (
         <div>
-            <Header />
+            <Header type="noback" />
             <div className="introSection">
                 <div>
                     Welcome

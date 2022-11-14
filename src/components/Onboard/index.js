@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import './index.css'
 
 
-const data = ["Use Search Apps to find apps to carry out your favorite activities", "Use Search Tutorial to find video tutorials on Youtube", "Schedule a Session to learn apps from a volunteer"]
+const data = ["Hi New User! Use Search Apps to find apps to carry out your favorite activities", "Use Search Tutorial to find video tutorials on Youtube", "Schedule a Session to learn apps from a volunteer"]
 
 function Onboard({ hide }) {
 

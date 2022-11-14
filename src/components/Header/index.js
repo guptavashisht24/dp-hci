@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import './index.css'
 import { Link } from "react-router-dom";
 import MenuImg from '../../images/menu.png'
@@ -9,23 +9,26 @@ import Back from '../../images/back.png'
 import { useNavigate } from "react-router-dom";
 
 
-function Header({type}) {
+function Header({ type }) {
     let navigate = useNavigate();
-    const showBackHeader = type && type=='back' 
-    
+    const showBackHeader = type && type == 'back'
+    const withBack = <div className="header">
+        <div className="w20" onClick={() => navigate(-1)}>
+            <img src={Back} />
+        </div>
+        <div className="flex w60">
+            <Link to={"/"}>V-Assist</Link>
+        </div>
+    </div>
+
+    const noBack = <div className="header">
+    <div className="flex">
+        <Link to={"/"}>V-Assist</Link>
+    </div>
+</div>
     return (
         <div>
-        {!showBackHeader && <div className="header">
-            <>V-Assist</>
-        </div>}
-         {showBackHeader && <div className="headerBack">
-             <div onClick={() => navigate(-1)}>
-                 <img src={Back}/>
-             </div>
-             <div>
-             <img src={Close}/>
-             </div>
-        </div>}
+            {type == "noback"?noBack:withBack}
         </div>
     )
 }
