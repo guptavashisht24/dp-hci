@@ -38,7 +38,7 @@ function AppSearch() {
     }
 
     useEffect(()=>{
-        if(!display)
+        if(!display && search)
             fetchData()
     }, [display, search])
 

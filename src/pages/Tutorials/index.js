@@ -1,11 +1,8 @@
 import React from "react";
 import './index.css'
-import Search from '../../images/search.png'
 import Header from '../../components/Header';
 import Menu from '../../components/Menu'
 import Microphone from '../../images/microphone.png'
-import Video from '../../images/video.png'
-import Time from '../../images/time.png'
 import YouTube from '../../images/youtube.png'
 
 function AppSearch() {
@@ -17,7 +14,7 @@ function AppSearch() {
                     <div className="w75">
                         <input type="text"></input>
                     </div>
-                    <div class="w20">
+                    <div className="w20">
                         <img src={Microphone} />
                     </div>
                 </div>
