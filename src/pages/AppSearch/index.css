@@ -6,6 +6,7 @@ input[type=text]{
     font-size: 2rem;
     border: none;
     width: 95%;
+    background: white !important;
 }
 .search{
     margin-top : 2vh;
@@ -44,4 +45,21 @@ input[type=text]{
 
 .pb8{
     padding-bottom: 8vh;
+}
+.autoContainer{
+    margin: 0 auto;
+    width: 90%;
+    position: absolute;
+    opacity: 1;
+    background-color: white;
+    margin-left: 5%;
+    font-size: 1.5rem;
+}
+.option{
+    border: 0.25px solid;
+    border-radius: 2px;
+    height : 7vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
