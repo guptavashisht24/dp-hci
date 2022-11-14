@@ -42,9 +42,13 @@ function Menu({ type }) {
                     <div className="menuDiv">
                         <img src={Call} />
                     </div>
+
                     <div className="menuDiv">
-                        <img src={Home} />
+                        <Link to="/">
+                            <img src={Home} />
+                        </Link>
                     </div>
+
                     <div className="menuDiv" onClick={() => { toggleMenu(!showMenu) }}>
                         <img src={MenuImg} />
                     </div>

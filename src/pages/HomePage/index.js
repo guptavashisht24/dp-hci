@@ -20,6 +20,7 @@ function HomePage() {
                 </div>
             </div>
             <div className="mb">
+                <Link to = "/search">
                 <div className="actions">
                     <div>
                         Search An App
@@ -28,7 +29,9 @@ function HomePage() {
                         <img src={Search} />
                     </div>
                 </div>
+                </Link>
                 <div>
+                <Link to = "/tutorials">
                     <div className="actions">
                         <div>
                             Search Tutorials
@@ -37,8 +40,10 @@ function HomePage() {
                             <img src={Video} />
                         </div>
                     </div>
+                </Link>
                 </div>
                 <div>
+                <Link to = "/user">
                     <div className="actions">
                         <div>
                             Schedule a Session
@@ -47,7 +52,7 @@ function HomePage() {
                             <img src={Time} />
                         </div>
                     </div>
-
+                </Link>
                 </div>
             </div>
             <Menu />
