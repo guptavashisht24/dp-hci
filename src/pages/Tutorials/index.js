@@ -4,6 +4,8 @@ import Header from '../../components/Header';
 import Menu from '../../components/Menu'
 import Microphone from '../../images/microphone.png'
 import YouTube from '../../images/youtube.png'
+import data from "../../Data/data2.json"
+
 
 function AppSearch() {
     return (

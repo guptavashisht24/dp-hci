@@ -1,7 +1,5 @@
 import React from "react"
-import logo from './logo.svg';
 import './App.css';
-import './components/SearchApps'
 import AppSearch from "./pages/AppSearch";
 import HomePage from "./pages/HomePage";
 import Tutorials from "./pages/Tutorials"
