@@ -26,7 +26,7 @@ function SessionList() {
         const { id = -1 } = params
         const data = JSON.parse(localStorage.getItem("data"))
         const { currentUser } = data
-        const sessions = data.userData[currentUser].sessions || []
+        const sessions = data[currentUser].sessions || []
         const sessionsToFilter = sessions.filter((item) => (id == item.sessionid)) || []
         if (sessionsToFilter.length > 0) {
             const content = sessionsToFilter[0]
@@ -48,46 +48,42 @@ function SessionList() {
             [event.target.name]: event.target.value
         })
 
-        
+
 
     }
 
     const updateSession = () => {
 
-        const {time,topic}=values
+        const { time, topic } = values
 
-        if(time===""){
-            document.getElementById('err_time').innerHTML="Time is required";
+        if (time === "") {
+            document.getElementById('err_time').innerHTML = "Time is required";
         }
 
-        else if(topic===""){
-            document.getElementById('err_topic').innerHTML="Topic is required";
+        else if (topic === "") {
+            document.getElementById('err_topic').innerHTML = "Topic is required";
         }
 
         const data = JSON.parse(localStorage.getItem("data"))
         const { currentUser } = data
         const { id = -1 } = params
-        var editedSession = { sessionid : parseInt(id), topic: values.topic, time: values.time, date : formatDate(values.date)};
+        var editedSession = { sessionid: parseInt(id), topic: values.topic, time: values.time, date: formatDate(values.date) };
         const sessions = data.userData[currentUser].sessions || []
         const newSessions = sessions.map((item) => {
-            if(item.sessionid == editedSession.sessionid){
+            if (item.sessionid == editedSession.sessionid) {
                 editedSession.volunteer_no = item.volunteer_no
                 editedSession.link = item.link
             }
-            return item.sessionid !== editedSession.sessionid ? item : editedSession}
-            );
+            return item.sessionid !== editedSession.sessionid ? item : editedSession
+        }
+        );
         const updatedObject = {
             ...data,
-            userData: {
-                ...data.userData,
-                [currentUser]: {
-                    sessions: newSessions
-                }
+            [currentUser]: {
+                sessions: newSessions
             }
+
         }
-
-        
-
         localStorage.setItem("data", JSON.stringify(updatedObject))
         navigate("/sessions")
     }
@@ -127,14 +123,14 @@ function SessionList() {
                         <div className="label">Time</div>
                         <div className="field">
                             <input name="time" type="time" value={values.time} onChange={onChangeValue} />
-                            <span id="err_time" style={{color:"red"}}></span>
+                            <span id="err_time" style={{ color: "red" }}></span>
                         </div>
                     </div>
                     <div className="rows">
                         <div className="label">Topic</div>
                         <div className="field">
                             <input type="text" name="topic" value={values.topic} onChange={onChangeValue} />
-                            <span id="err_topic" style={{color:"red"}}></span>
+                            <span id="err_topic" style={{ color: "red" }}></span>
                         </div>
                     </div>
                     <div className="submitButton">
@@ -143,8 +139,8 @@ function SessionList() {
                 </form>
             </div>}
             {showData && <div className="centerData">
-                    There is no data for this session
-                </div>}
+                There is no data for this session
+            </div>}
             <Menu />
         </div>
     )
