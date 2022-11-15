@@ -49,6 +49,6 @@
     ]
   },
   "devDependencies": {
-    "webpack": "^5.74.0"
+    "webpack": "^4.28.3"
   }
 }
