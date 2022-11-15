@@ -70,8 +70,8 @@ function SessionList() {
         else {
             if (!localStorage.getItem('data')) {
                 const newObject = {
-                    currentUser: phoneNumber,
-                    [phoneNumber]: {
+                    currentUser: `${phoneNumber}`,
+                    [`${phoneNumber}`]: {
                         password,
                         "sessions": [{
                             sessionid: sessionsVal + 1,
@@ -102,8 +102,8 @@ function SessionList() {
                         }]
                         const updatedObject = {
                             ...data,
-                            currentUser : phoneNumber,
-                            [phoneNumber]:{
+                            currentUser : `${phoneNumber}`,
+                            [`${phoneNumber}`]:{
                                 ...data[phoneNumber],
                                 "sessions" : updatedSessions
                             }
@@ -116,8 +116,8 @@ function SessionList() {
                 } else {
                     const newObject = {
                         ...data,
-                        currentUser: phoneNumber,
-                        [phoneNumber]: {
+                        currentUser: `${phoneNumber}`,
+                        [`${phoneNumber}`]: {
                             password,
                             "sessions": [{
                                 sessionid: sessionsVal + 1,
