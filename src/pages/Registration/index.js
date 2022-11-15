@@ -127,7 +127,7 @@ function SessionList() {
                             ...data,
                             currentUser: `${phoneNumber}`,
                             [`${phoneNumber}`]: {
-                                ...data[phoneNumber],
+                                password : data[phoneNumber].password,
                                 "sessions": updatedSessions
                             }
                         }

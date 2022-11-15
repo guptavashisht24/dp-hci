@@ -49,7 +49,7 @@ function SessionList() {
                 </div>
             </div>
         ))
-        return result.length === 0 ? <div className="centerData">No Existing Sessions</div> : result
+        return result.length === 0 ? <div className="centerData">No Previous Sessions</div> : result
     }
 
     const renderUpcomingSessoins = () => {
@@ -97,7 +97,7 @@ function SessionList() {
                 <div>
                     <div className="parentList">
                         <div className="sessionList" >
-                            Existing Session(s)
+                            Previous Session(s)
                         </div>
                         {renderExistingSessions()}
                     </div>
