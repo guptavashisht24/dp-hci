@@ -12,7 +12,10 @@ function SessionList() {
     useEffect(() => {
         const data = JSON.parse(localStorage.getItem("data"))
         const { currentUser } = data
-        const sessions = data.userData[currentUser].sessions || []
+        console.log(currentUser)
+        console.log(data)
+        const sessions = data[currentUser].sessions || []
+        console.log(sessions)
         const upcomingSessions = sessions.filter((item) => ((new Date(`${item.date} ${item.time}`) - Date.now()) >= 0)) || []
         const existingSessions = sessions.filter((item) => {
             return ((new Date(`${item.date} ${item.time}`) - Date.now()) < 0)
