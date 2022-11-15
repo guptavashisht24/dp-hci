@@ -111,7 +111,8 @@ function AppSearch() {
                         </form>
                     </div>
                     {SpeechRecognitionWorks && <div className="w20" onClick={()=>{GetSpeech()}}>
-                        <img src={Microphone} />
+                    <i class="bi bi-mic-fill icon-style-microphone"></i>
+                        {/* <img src={Microphone} /> */}
                     </div>}
                 </div>
                 {display && <div className="autoContainer">

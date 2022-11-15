@@ -121,7 +121,8 @@ function AppSearch() {
                     <a href={value.link}>
                         <div className="list">
                             <div className="icon">
-                                <img src={YouTube} />
+                            <i class="bi bi-youtube icon-style-youtube"></i>
+                                {/* <img src={YouTube} /> */}
                             </div>
                             <div className="content">
                                 {value.title}
@@ -152,7 +153,8 @@ function AppSearch() {
                         </form>
                     </div>
                     {SpeechRecognitionWorks && <div className="w20" onClick={()=>{GetSpeech()}}>
-                        <img src={Microphone} />
+                    <i class="bi bi-mic-fill icon-style-microphone"></i>
+                        {/* <img src={Microphone} /> */}
                     </div>}
                 </div>
                 {display && <div className="autoContainer">

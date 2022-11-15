@@ -86,3 +86,9 @@ width: 90%;
     justify-content: center;
     margin-top: 25vh;
 }
+.icon-style-microphone{
+    font-weight:700 !important;
+    color:#000000 !important;
+    font-size:35px !important;
+    padding-left: 18px;
+}
