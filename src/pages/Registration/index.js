@@ -8,87 +8,132 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { Alert } from "react-bootstrap";
 
+let sessionsVal = 0
+
 function SessionList() {
 
 
-     // const [startDate, setStartDate] = useState(new Date());
+    // const [startDate, setStartDate] = useState(new Date());
 
-    
 
-    const [formData,setFromData]=useState({
-        firstName:"",
-        lastName:"",
-        time:'00:00',
-        startDate:"",
-        phoneNumber:"",
-        password:"",
-        topic:""
+
+    const [formData, setFromData] = useState({
+        firstName: "",
+        lastName: "",
+        time: '00:00',
+        startDate: "",
+        phoneNumber: "",
+        password: "",
+        topic: ""
     })
 
-    const [data,setData]=useState([])
+    const [data, setData] = useState([])
 
-    function handle(e){
-      
-       const {value,name}=e.target;
+    function handle(e) {
 
-       setFromData(()=>{
-        return{
-            ...formData,
-            [name]:value
-        }
-       })
+        const { value, name } = e.target;
 
-       console.log(formData);
+        setFromData(() => {
+            return {
+                ...formData,
+                [name]: value
+            }
+        })
     }
 
-    const addData=(e)=>{
+    const addData = (e) => {
         e.preventDefault();
 
-        const {firstName,lastName,time,phoneNumber,password,topic}=formData
+        const { firstName, lastName, time, phoneNumber, password, topic, startDate } = formData
 
-        if(firstName===""){
-            document.getElementById('error_fname').innerHTML="First Name is required";
+        if (firstName === "") {
+            document.getElementById('error_fname').innerHTML = "First Name is required";
         }
-        else if(lastName===""){
-            document.getElementById('error_lname').innerHTML="Last Name is required";
+        else if (lastName === "") {
+            document.getElementById('error_lname').innerHTML = "Last Name is required";
         }
-        else if(time===""){
-            document.getElementById('error_time').innerHTML="Time is required";
+        else if (time === "") {
+            document.getElementById('error_time').innerHTML = "Time is required";
         }
-        else if(phoneNumber===""){
-            document.getElementById('error_phno').innerHTML="Phone Number is required";
+        else if (phoneNumber === "") {
+            document.getElementById('error_phno').innerHTML = "Phone Number is required";
         }
-        else if(phoneNumber.length<10 || phoneNumber.length>10){
-            document.getElementById('error_phno').innerHTML="invalid phone number";
+        else if (phoneNumber.length < 10 || phoneNumber.length > 10) {
+            document.getElementById('error_phno').innerHTML = "invalid phone number";
         }
-        else if(password===""){
-            document.getElementById('error_pwd').innerHTML="Password is required";
+        else if (password === "") {
+            document.getElementById('error_pwd').innerHTML = "Password is required";
         }
-        else if(topic===""){
-            document.getElementById('error_topic').innerHTML="Topic is required";
+        else if (topic === "") {
+            document.getElementById('error_topic').innerHTML = "Topic is required";
         }
-        else{
-            alert("Registered Successfully")
-            // localStorage.setItem("data",JSON.stringify({currentUser : "Vashisht", userData : {
-
-    //     "Vashisht" : {
-    //         "sessions" : [{"sessionid" : 1, "time" : "05:45AM", "date":"08/21/2022", "topic":"test", "volunteer_no" : 1}, {"sessionid" : 1, "time" : "05:45AM", "date":"08/21/2022", "topic":"test", "volunteer_no" : 1}, {"sessionid" : 1, "time" : "05:45AM", "date":"08/21/2022", "topic":"", "volunteer_no" : 1}, {"sessionid" : 1, "time" : "05:45AM", "date":"08/21/2022", "topic":"", "volunteer_no" : 1}, {"sessionid" : 1, "time" : "05:45AM", "date":"08/21/2022", "topic":"", "volunteer_no" : 1}]
-    //     },
-    //     "Srushti" : { "sessions" : [] },
-    //     "Ankit" : {"sessions" : [] },
-    //     "Rutvik" : {"sessions" : [] }
-    // }}))
-            // localStorage.setItem("user",JSON.stringify([...data,formData]))
-            localStorage.setItem("data",JSON.stringify({
-                currentUser:firstName,
-                userData:{
-                   " `${firstName}`":{
-                    "sessions":[{"sessionid":1,...data,formData}]
-                   }
+        else {
+            if (!localStorage.getItem('data')) {
+                const newObject = {
+                    currentUser: phoneNumber,
+                    [phoneNumber]: {
+                        password,
+                        "sessions": [{
+                            sessionid: sessionsVal + 1,
+                            date: startDate,
+                            topic: topic,
+                            volunteer_no: 1,
+                            time: time
+                        }]
+                    }
                 }
-            }))
+                sessionsVal+=1
+                localStorage.setItem('data', JSON.stringify(newObject))
+            } else {
+                const data = JSON.parse(localStorage.getItem('data'))
+                if (phoneNumber in data) {
+                    const f_password = data[phoneNumber].password
+                    if (f_password !== password) {
+                        document.getElementById('error_pwd').innerHTML = "Incorrect Password";
+                        return
+                    } else {
+                        console.log(data[phoneNumber].sessions)
+                        const updatedSessions = [...data[phoneNumber].sessions,{
+                            sessionid: sessionsVal + 1,
+                            date: startDate,
+                            topic: topic,
+                            volunteer_no: 1,
+                            time: time
+                        }]
+                        const updatedObject = {
+                            ...data,
+                            currentUser : phoneNumber,
+                            [phoneNumber]:{
+                                ...data[phoneNumber],
+                                "sessions" : updatedSessions
+                            }
+                        }
+                        
+                        sessionsVal+=1
+                        localStorage.setItem('data', JSON.stringify(updatedObject))
+                    
+                    }
+                } else {
+                    const newObject = {
+                        ...data,
+                        currentUser: phoneNumber,
+                        [phoneNumber]: {
+                            password,
+                            "sessions": [{
+                                sessionid: sessionsVal + 1,
+                                date: startDate,
+                                topic: topic,
+                                volunteer_no: 1,
+                                time: time
+                            }]
+                        }
+                    }
+                    sessionsVal+=1
+                    localStorage.setItem('data', JSON.stringify(newObject))
+                }
+            }
         }
-       
+
     }
 
     return (
@@ -99,30 +144,30 @@ function SessionList() {
                     <div className="label">First Name</div>
                     <div className="field">
                         <input type="text"
-                                name='firstName'
+                            name='firstName'
                             onChange={handle}
                         />
-                        <span id="error_fname" style={{color:'red'}}></span>
+                        <span id="error_fname" style={{ color: 'red' }}></span>
                     </div>
                 </div>
                 <div className="rows">
                     <div className="label">Last Name</div>
                     <div className="field">
-                        <input type="text" 
-                                name='lastName'
-                         onChange={handle}
+                        <input type="text"
+                            name='lastName'
+                            onChange={handle}
                         />
-                        <span id="error_lname" style={{color:'red'}}></span>
+                        <span id="error_lname" style={{ color: 'red' }}></span>
                     </div>
                 </div>
                 <div className="rows">
                     <div className="label">Date</div>
                     <div className="field">
-                     <input type="date"
+                        <input type="date"
                             name='date'
-                             min="2017-01-01" 
-                    onChange={handle} /> 
-                    <span id="error_date" style={{color:'red'}}></span>
+                            min="2017-01-01"
+                            onChange={handle} />
+                        <span id="error_date" style={{ color: 'red' }}></span>
                     </div>
                 </div>
                 <div className="rows">
@@ -130,39 +175,39 @@ function SessionList() {
                     <div className="field">
                         <input type="time"
                             name='time'
-                        onChange={handle}
+                            onChange={handle}
                         />
-                        <span id="error_time" style={{color:'red'}}></span>
+                        <span id="error_time" style={{ color: 'red' }}></span>
                     </div>
                 </div>
                 <div className="rows">
                     <div className="label">Phone Number</div>
                     <div className="field">
-                        <input type="number" 
+                        <input type="number"
                             name='phoneNumber'
-                         onChange={handle}
+                            onChange={handle}
                         />
-                        <span id="error_phno" style={{color:'red'}}></span>
+                        <span id="error_phno" style={{ color: 'red' }}></span>
                     </div>
                 </div>
                 <div className="rows">
                     <div className="label">Password</div>
                     <div className="field">
-                        <input type="password" 
-                        name='password'
-                        onChange={handle}
+                        <input type="password"
+                            name='password'
+                            onChange={handle}
                         />
-                        <span id="error_pwd" style={{color:'red'}}></span>
+                        <span id="error_pwd" style={{ color: 'red' }}></span>
                     </div>
                 </div>
                 <div className="rows">
                     <div className="label">Topic</div>
                     <div className="field">
-                        <input type="text" 
-                        name='topic'
-                         onChange={handle}
+                        <input type="text"
+                            name='topic'
+                            onChange={handle}
                         />
-                        <span id="error_topic" style={{color:'red'}}></span>
+                        <span id="error_topic" style={{ color: 'red' }}></span>
                     </div>
                 </div>
                 <div className="submit">
