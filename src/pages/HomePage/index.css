@@ -22,3 +22,13 @@
     padding: 20px;
     margin-bottom: 0.5vh;
 }
+
+.mb{
+    margin-bottom: 8.5vh;
+}
+.icon-style{
+    font-weight:700 !important;
+    color:#3895d3 !important;
+    font-size:40px !important;
+
+}
