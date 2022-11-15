@@ -7,7 +7,6 @@ import { useNavigate } from "react-router-dom";
 
 
 import "react-datepicker/dist/react-datepicker.css";
-import { Alert } from "react-bootstrap";
 
 let sessionsVal = 0
 
@@ -96,7 +95,7 @@ function SessionList() {
                     [`${phoneNumber}`]: {
                         password,
                         "sessions": [{
-                            sessionid: sessionsVal + 1,
+                            sessionid: `${sessionsVal + 1}${makeid(4)}`,
                             date: formatDate(startDate),
                             topic: topic,
                             volunteer_no: 1,
@@ -117,7 +116,7 @@ function SessionList() {
                         return
                     } else {
                         const updatedSessions = [...data[phoneNumber].sessions, {
-                            sessionid: sessionsVal + 1,
+                            sessionid: `${sessionsVal + 1}${makeid(4)}`,
                             date: formatDate(startDate),
                             topic: topic,
                             volunteer_no: 1,
@@ -145,7 +144,7 @@ function SessionList() {
                         [`${phoneNumber}`]: {
                             password : password,
                             "sessions": [{
-                                sessionid: sessionsVal + 1,
+                                sessionid: `${sessionsVal + 1}${makeid(4)}`,
                                 date: formatDate(startDate),
                                 topic: topic,
                                 volunteer_no: 1,

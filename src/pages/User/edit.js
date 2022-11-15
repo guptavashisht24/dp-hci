@@ -27,7 +27,9 @@ function SessionList() {
         const data = JSON.parse(localStorage.getItem("data"))
         const { currentUser } = data
         const sessions = data[currentUser].sessions || []
+        console.log(sessions)
         const sessionsToFilter = sessions.filter((item) => (id == item.sessionid)) || []
+        console.log(sessionsToFilter)
         if (sessionsToFilter.length > 0) {
             const content = sessionsToFilter[0]
             updateValues({
@@ -67,7 +69,7 @@ function SessionList() {
         const data = JSON.parse(localStorage.getItem("data"))
         const { currentUser } = data
         const { id = -1 } = params
-        var editedSession = { sessionid: parseInt(id), topic: values.topic, time: values.time, date: formatDate(values.date) };
+        var editedSession = { sessionid: id, topic: values.topic, time: values.time, date: formatDate(values.date) };
         const sessions = data[currentUser].sessions || []
         const newSessions = sessions.map((item) => {
             if (item.sessionid == editedSession.sessionid) {
