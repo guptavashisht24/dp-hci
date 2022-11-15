@@ -1,4 +1,5 @@
 import React,{useState} from "react";
+import {Link} from "react-router-dom"
 import './index.css'
 import Header from '../../components/Header';
 import Menu from '../../components/Menu'
@@ -56,11 +57,6 @@ function SessionList() {
             }
             else{
                 alert("user login successfull");
-                // localStorage.setItem("data",JSON.stringify({
-                //     userData:{
-                //             "sessions":[{"sessionid":id+1,...userdata}]
-                //     }
-                // }))
             }
           }
         }
@@ -94,7 +90,7 @@ function SessionList() {
                 </div>
                
                 <div className="submit">
-                    <input type="button" value="SUBMIT" onClick={addData}></input>
+                  <Link to="/sessions"> <input type="button" value="SUBMIT" onClick={addData}></input></Link> 
                 </div>
             </div>
             <Menu />

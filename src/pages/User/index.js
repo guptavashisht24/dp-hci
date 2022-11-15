@@ -17,7 +17,7 @@ function User() {
                 <div>
                     <div className="choice">
                         <div >
-                            Existing Session
+                          <Link to="/login">Existing Session</Link>
                         </div>
                     </div>
                 </div>
