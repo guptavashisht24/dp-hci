@@ -18,7 +18,7 @@ function HomePage() {
     })
     return (
         <div>
-            <Header />
+            <Header type="noback"/>
             
             {/* <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" /> */}
             <div className="introSection">
