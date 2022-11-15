@@ -211,7 +211,7 @@ function SessionList() {
                     </div>
                 </div>
                 <div className="submit">
-                    <input type="button" value="SUBMIT" onClick={addData}></input>
+                <Link to="/confirm"><input type="button" value="SUBMIT" onClick={addData}></input></Link> 
                 </div>
             </div>
             <Menu />
