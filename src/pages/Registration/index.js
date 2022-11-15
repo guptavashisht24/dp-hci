@@ -15,20 +15,16 @@ function SessionList() {
 
     const navigate = useNavigate()
 
-
-    const [startDate, setStartDate] = useState(new Date());
-
-
-
     const [formData, setFromData] = useState({
         firstName: "",
         lastName: "",
         time: '00:00',
-        startDate: "",
+        startDate: Date.now(),
         phoneNumber: "",
         password: "",
         topic: ""
     })
+
 
     const [data, setData] = useState([])
 
@@ -44,11 +40,34 @@ function SessionList() {
         })
     }
 
+    const formatDate = (date) => {
+        var d = new Date(date),
+            month = '' + (d.getMonth() + 1),
+            day = '' + d.getDate(),
+            year = d.getFullYear();
+
+        if (month.length < 2)
+            month = '0' + month;
+        if (day.length < 2)
+            day = '0' + day;
+
+        return [month, day, year].join('/');
+    }
+
+    const makeid = (length) => {
+        var result           = '';
+        var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+        var charactersLength = characters.length;
+        for ( var i = 0; i < length; i++ ) {
+            result += characters.charAt(Math.floor(Math.random() * charactersLength));
+        }
+        return result;
+    }
+
     const addData = (e) => {
+        
         e.preventDefault();
-
         const { firstName, lastName, time, phoneNumber, password, topic, startDate } = formData
-
         if (firstName === "") {
             document.getElementById('error_fname').innerHTML = "First Name is required";
         }
@@ -78,10 +97,11 @@ function SessionList() {
                         password,
                         "sessions": [{
                             sessionid: sessionsVal + 1,
-                            date: startDate,
+                            date: formatDate(startDate),
                             topic: topic,
                             volunteer_no: 1,
-                            time: time
+                            time: time,
+                            link : `zoom.us/${makeid(5)}`
                         }]
                     }
                 }
@@ -96,13 +116,13 @@ function SessionList() {
                         document.getElementById('error_pwd').innerHTML = "Incorrect Password";
                         return
                     } else {
-                        console.log(data[phoneNumber].sessions)
                         const updatedSessions = [...data[phoneNumber].sessions, {
                             sessionid: sessionsVal + 1,
-                            date: startDate,
+                            date: formatDate(startDate),
                             topic: topic,
                             volunteer_no: 1,
-                            time: time
+                            time: time,
+                            link : `zoom.us/${makeid(5)}`
                         }]
                         const updatedObject = {
                             ...data,
@@ -123,13 +143,14 @@ function SessionList() {
                         ...data,
                         currentUser: `${phoneNumber}`,
                         [`${phoneNumber}`]: {
-                            password,
+                            password : password,
                             "sessions": [{
                                 sessionid: sessionsVal + 1,
-                                date: startDate,
+                                date: formatDate(startDate),
                                 topic: topic,
                                 volunteer_no: 1,
-                                time: time
+                                time: time,
+                                link : `zoom.us/${makeid(5)}`
                             }]
                         }
                     }
@@ -169,7 +190,7 @@ function SessionList() {
                 <div className="rows">
                     <div className="label">Date</div>
                     <div className="field">
-                        <DatePicker selected={startDate} minDate={new Date()} onChange={(date) => {
+                        <DatePicker selected={formData.startDate} minDate={new Date()} onChange={(date) => {
                             setFromData({
                                 ...formData,
                                 startDate: date
