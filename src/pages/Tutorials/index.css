@@ -1,12 +1,8 @@
 img{
     max-width: 100%;
 } 
-input[type=text]{
-    height: 7vh;
-    font-size: 2rem;
-    border: none;
-    width: 95%;
-}
+
+
 .search{
     margin-top : 2vh;
     margin-bottom: 2vh;
@@ -92,4 +88,11 @@ input[type=text]{
     color:#000000 !important;
     font-size:35px !important;
     padding-left: 18px;
+}
+
+input[type=text]{
+    height: 7vh;
+    font-size: 2rem;
+    border: none;
+    width: 95%;
 }

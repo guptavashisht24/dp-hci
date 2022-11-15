@@ -55,7 +55,7 @@ function AppSearch() {
     const [loaders, updateLoaders] = useState(false)
     const [result, updateResult] = useState([])
 
-    const SpeechRecognitionWorks = window.SpeechRecognition || window.webkitSpeechRecognition;
+    const SpeechRecognitionWorks = 'SpeechRecognition' in window || 'webkitSpeechRecognition' in window;
 
 
     const GetSpeech = () => {
