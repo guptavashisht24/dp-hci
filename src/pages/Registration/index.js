@@ -13,7 +13,7 @@ let sessionsVal = 0
 function SessionList() {
 
 
-    // const [startDate, setStartDate] = useState(new Date());
+    const [startDate, setStartDate] = useState(new Date());
 
 
 
@@ -163,10 +163,11 @@ function SessionList() {
                 <div className="rows">
                     <div className="label">Date</div>
                     <div className="field">
-                        <input type="date"
+                        {/* <input type="date"
                             name='date'
                             min="2017-01-01"
-                            onChange={handle} />
+                            onChange={handle} /> */}
+                             <DatePicker selected={startDate} onChange={(date) =>setStartDate(date)} />
                         <span id="error_date" style={{ color: 'red' }}></span>
                     </div>
                 </div>
