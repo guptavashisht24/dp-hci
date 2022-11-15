@@ -14,7 +14,8 @@ function Header({ type }) {
     const showBackHeader = type && type == 'back'
     const withBack = <div className="header">
         <div className="w20" onClick={() => navigate(-1)}>
-            <img src={Back} />
+        <i class="bi bi-arrow-left icon-style-arrow"></i>
+            {/* <img src={Back} /> */}
         </div>
         <div className="flex w60">
             <Link to={"/"}>V-Assist</Link>
