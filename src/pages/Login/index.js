@@ -1,11 +1,14 @@
 import React,{useState} from "react";
-import {Link} from "react-router-dom"
 import './index.css'
 import Header from '../../components/Header';
 import Menu from '../../components/Menu'
+import { useNavigate } from "react-router-dom";
+
 
 
 function SessionList() {
+
+    const navigate = useNavigate()
 
     const [formData,setFromData]=useState({
         phoneNumber:"",
@@ -56,7 +59,7 @@ function SessionList() {
                 alert("invalid details")
             }
             else{
-                alert("user login successfull");
+                navigate("/sessions")
             }
           }
         }
@@ -90,7 +93,7 @@ function SessionList() {
                 </div>
                
                 <div className="submit">
-                  <Link to="/sessions"> <input type="button" value="SUBMIT" onClick={addData}></input></Link> 
+                 <input type="button" value="SUBMIT" onClick={addData}></input>
                 </div>
             </div>
             <Menu />

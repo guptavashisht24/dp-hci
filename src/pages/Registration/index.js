@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import './index.css'
-import { Link } from "react-router-dom";
 import Header from '../../components/Header';
 import Menu from '../../components/Menu'
 import DatePicker from "react-datepicker";
+import { useNavigate } from "react-router-dom";
+
 
 import "react-datepicker/dist/react-datepicker.css";
 import { Alert } from "react-bootstrap";
@@ -11,6 +12,8 @@ import { Alert } from "react-bootstrap";
 let sessionsVal = 0
 
 function SessionList() {
+
+    const navigate = useNavigate()
 
 
     const [startDate, setStartDate] = useState(new Date());
@@ -82,8 +85,9 @@ function SessionList() {
                         }]
                     }
                 }
-                sessionsVal+=1
+                sessionsVal += 1
                 localStorage.setItem('data', JSON.stringify(newObject))
+                navigate("/confirm")
             } else {
                 const data = JSON.parse(localStorage.getItem('data'))
                 if (phoneNumber in data) {
@@ -93,7 +97,7 @@ function SessionList() {
                         return
                     } else {
                         console.log(data[phoneNumber].sessions)
-                        const updatedSessions = [...data[phoneNumber].sessions,{
+                        const updatedSessions = [...data[phoneNumber].sessions, {
                             sessionid: sessionsVal + 1,
                             date: startDate,
                             topic: topic,
@@ -102,16 +106,17 @@ function SessionList() {
                         }]
                         const updatedObject = {
                             ...data,
-                            currentUser : `${phoneNumber}`,
-                            [`${phoneNumber}`]:{
+                            currentUser: `${phoneNumber}`,
+                            [`${phoneNumber}`]: {
                                 ...data[phoneNumber],
-                                "sessions" : updatedSessions
+                                "sessions": updatedSessions
                             }
                         }
-                        
-                        sessionsVal+=1
+
+                        sessionsVal += 1
                         localStorage.setItem('data', JSON.stringify(updatedObject))
-                    
+                        navigate("/confirm")
+
                     }
                 } else {
                     const newObject = {
@@ -128,8 +133,9 @@ function SessionList() {
                             }]
                         }
                     }
-                    sessionsVal+=1
+                    sessionsVal += 1
                     localStorage.setItem('data', JSON.stringify(newObject))
+                    navigate("/confirm")
                 }
             }
         }
@@ -163,11 +169,13 @@ function SessionList() {
                 <div className="rows">
                     <div className="label">Date</div>
                     <div className="field">
-                        {/* <input type="date"
-                            name='date'
-                            min="2017-01-01"
-                            onChange={handle} /> */}
-                             <DatePicker selected={startDate} onChange={(date) =>setStartDate(date)} />
+                        <DatePicker selected={startDate} minDate={new Date()} onChange={(date) => {
+                            setFromData({
+                                ...formData,
+                                startDate: date
+                            })
+
+                        }} />
                         <span id="error_date" style={{ color: 'red' }}></span>
                     </div>
                 </div>
@@ -212,7 +220,7 @@ function SessionList() {
                     </div>
                 </div>
                 <div className="submit">
-                <Link to="/confirm"><input type="button" value="SUBMIT" onClick={addData}></input></Link> 
+                    <input type="button" value="SUBMIT" onClick={addData}></input>
                 </div>
             </div>
             <Menu />
