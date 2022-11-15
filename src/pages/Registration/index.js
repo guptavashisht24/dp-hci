@@ -11,12 +11,15 @@ import { Alert } from "react-bootstrap";
 function SessionList() {
 
 
-    const [startDate, setStartDate] = useState(new Date());
+     // const [startDate, setStartDate] = useState(new Date());
+
+    
 
     const [formData,setFromData]=useState({
         firstName:"",
         lastName:"",
         time:'00:00',
+        startDate:"",
         phoneNumber:"",
         password:"",
         topic:""
@@ -44,29 +47,46 @@ function SessionList() {
         const {firstName,lastName,time,phoneNumber,password,topic}=formData
 
         if(firstName===""){
-            alert('First Name is required')
+            document.getElementById('error_fname').innerHTML="First Name is required";
         }
         else if(lastName===""){
-            alert('Last Name is required')
+            document.getElementById('error_lname').innerHTML="Last Name is required";
         }
         else if(time===""){
-            alert('Time is required')
+            document.getElementById('error_time').innerHTML="Time is required";
         }
         else if(phoneNumber===""){
-            alert('Phone Number is required')
+            document.getElementById('error_phno').innerHTML="Phone Number is required";
         }
         else if(phoneNumber.length<10 || phoneNumber.length>10){
-            alert('invalid phone number')
+            document.getElementById('error_phno').innerHTML="invalid phone number";
         }
         else if(password===""){
-            alert('Password is required')
+            document.getElementById('error_pwd').innerHTML="Password is required";
         }
         else if(topic===""){
-            alert('Topic is required')
+            document.getElementById('error_topic').innerHTML="Topic is required";
         }
         else{
             alert("Registered Successfully")
-            localStorage.setItem("user",JSON.stringify([...data,formData]))
+            // localStorage.setItem("data",JSON.stringify({currentUser : "Vashisht", userData : {
+
+    //     "Vashisht" : {
+    //         "sessions" : [{"sessionid" : 1, "time" : "05:45AM", "date":"08/21/2022", "topic":"test", "volunteer_no" : 1}, {"sessionid" : 1, "time" : "05:45AM", "date":"08/21/2022", "topic":"test", "volunteer_no" : 1}, {"sessionid" : 1, "time" : "05:45AM", "date":"08/21/2022", "topic":"", "volunteer_no" : 1}, {"sessionid" : 1, "time" : "05:45AM", "date":"08/21/2022", "topic":"", "volunteer_no" : 1}, {"sessionid" : 1, "time" : "05:45AM", "date":"08/21/2022", "topic":"", "volunteer_no" : 1}]
+    //     },
+    //     "Srushti" : { "sessions" : [] },
+    //     "Ankit" : {"sessions" : [] },
+    //     "Rutvik" : {"sessions" : [] }
+    // }}))
+            // localStorage.setItem("user",JSON.stringify([...data,formData]))
+            localStorage.setItem("data",JSON.stringify({
+                currentUser:firstName,
+                userData:{
+                   " `${firstName}`":{
+                    "sessions":[{"sessionid":1,...data,formData}]
+                   }
+                }
+            }))
         }
        
     }
@@ -82,6 +102,7 @@ function SessionList() {
                                 name='firstName'
                             onChange={handle}
                         />
+                        <span id="error_fname" style={{color:'red'}}></span>
                     </div>
                 </div>
                 <div className="rows">
@@ -91,14 +112,17 @@ function SessionList() {
                                 name='lastName'
                          onChange={handle}
                         />
+                        <span id="error_lname" style={{color:'red'}}></span>
                     </div>
                 </div>
                 <div className="rows">
                     <div className="label">Date</div>
                     <div className="field">
-                    <DatePicker selected={startDate} 
+                     <input type="date"
                             name='date'
-                    onChange={handle} />
+                             min="2017-01-01" 
+                    onChange={handle} /> 
+                    <span id="error_date" style={{color:'red'}}></span>
                     </div>
                 </div>
                 <div className="rows">
@@ -108,6 +132,7 @@ function SessionList() {
                             name='time'
                         onChange={handle}
                         />
+                        <span id="error_time" style={{color:'red'}}></span>
                     </div>
                 </div>
                 <div className="rows">
@@ -117,6 +142,7 @@ function SessionList() {
                             name='phoneNumber'
                          onChange={handle}
                         />
+                        <span id="error_phno" style={{color:'red'}}></span>
                     </div>
                 </div>
                 <div className="rows">
@@ -126,6 +152,7 @@ function SessionList() {
                         name='password'
                         onChange={handle}
                         />
+                        <span id="error_pwd" style={{color:'red'}}></span>
                     </div>
                 </div>
                 <div className="rows">
@@ -135,6 +162,7 @@ function SessionList() {
                         name='topic'
                          onChange={handle}
                         />
+                        <span id="error_topic" style={{color:'red'}}></span>
                     </div>
                 </div>
                 <div className="submit">
