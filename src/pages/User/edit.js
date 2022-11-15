@@ -68,7 +68,7 @@ function SessionList() {
         const { currentUser } = data
         const { id = -1 } = params
         var editedSession = { sessionid: parseInt(id), topic: values.topic, time: values.time, date: formatDate(values.date) };
-        const sessions = data.userData[currentUser].sessions || []
+        const sessions = data[currentUser].sessions || []
         const newSessions = sessions.map((item) => {
             if (item.sessionid == editedSession.sessionid) {
                 editedSession.volunteer_no = item.volunteer_no
@@ -99,7 +99,7 @@ function SessionList() {
         if (day.length < 2)
             day = '0' + day;
 
-        return [year, month, day].join('/');
+        return [month,day,year].join('/');
     }
 
     return (
