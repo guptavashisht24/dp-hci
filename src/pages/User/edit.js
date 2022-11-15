@@ -21,6 +21,7 @@ function SessionList() {
     const [showData, noShowData] = useState(false)
 
 
+
     useEffect(() => {
         const { id = -1 } = params
         const data = JSON.parse(localStorage.getItem("data"))
@@ -46,9 +47,23 @@ function SessionList() {
             ...values,
             [event.target.name]: event.target.value
         })
+
+        
+
     }
 
     const updateSession = () => {
+
+        const {time,topic}=values
+
+        if(time===""){
+            document.getElementById('err_time').innerHTML="Time is required";
+        }
+
+        else if(topic===""){
+            document.getElementById('err_topic').innerHTML="Topic is required";
+        }
+
         const data = JSON.parse(localStorage.getItem("data"))
         const { currentUser } = data
         const { id = -1 } = params
@@ -70,6 +85,9 @@ function SessionList() {
                 }
             }
         }
+
+        
+
         localStorage.setItem("data", JSON.stringify(updatedObject))
         navigate("/sessions")
     }
@@ -109,12 +127,14 @@ function SessionList() {
                         <div className="label">Time</div>
                         <div className="field">
                             <input name="time" type="time" value={values.time} onChange={onChangeValue} />
+                            <span id="err_time" style={{color:"red"}}></span>
                         </div>
                     </div>
                     <div className="rows">
                         <div className="label">Topic</div>
                         <div className="field">
                             <input type="text" name="topic" value={values.topic} onChange={onChangeValue} />
+                            <span id="err_topic" style={{color:"red"}}></span>
                         </div>
                     </div>
                     <div className="submitButton">
