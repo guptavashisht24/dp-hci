@@ -67,11 +67,18 @@ function SessionList() {
         
         e.preventDefault();
         const { firstName, lastName, time, phoneNumber, password, topic, startDate } = formData
+        let letters = /^[A-Za-z]+$/;
         if (firstName === "") {
             document.getElementById('error_fname').innerHTML = "First Name is required";
         }
+        else if(!firstName.match(letters)){
+            document.getElementById('error_fname').innerHTML="First Name should only consists of letters"
+        }
         else if (lastName === "") {
             document.getElementById('error_lname').innerHTML = "Last Name is required";
+        }
+        else if(!lastName.match(letters)){
+            document.getElementById('error_lname').innerHTML="Last Name should only consists of letters"
         }
         else if (time === "") {
             document.getElementById('error_time').innerHTML = "Time is required";
