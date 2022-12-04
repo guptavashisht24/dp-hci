@@ -57,7 +57,7 @@ function Menu({ type }) {
 
                     <div className="menuDiv">
                         <Link to="/">
-                            <i class="bi bi-house-door-fill icon-style-footer"></i>
+                            <i onClick = {()=>{toggleMenu(false)}} class="bi bi-house-door-fill icon-style-footer"></i>
                             {/* <img src={Home} /> */}
                         </Link>
                     </div>
