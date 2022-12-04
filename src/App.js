@@ -7,6 +7,7 @@ import User from "./pages/User";
 import Sessions from "./pages/User/existing"
 import Confirm from "./pages/User/confirm"
 import NoMobile from "./components/NoMobile"
+import Contact from "./pages/Contact"
 import { Route, Routes } from "react-router-dom"
 import Login from "./pages/Login"
 import Edit from "./pages/User/edit"
@@ -41,6 +42,7 @@ function App() {
           <Route path="/confirm" element={<Confirm/>}/>
           <Route path="/registration" element={<Registration/>}/>
           <Route path="/login" element={<Login />} />
+          <Route path="/contact" element={<Contact />} />
           <Route path="/edit/:id" element={<Edit />} />
         </Routes>
         </div>

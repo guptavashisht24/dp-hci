@@ -82,6 +82,7 @@ function SessionList() {
         const updatedObject = {
             ...data,
             [currentUser]: {
+                password : data[currentUser].password,
                 sessions: newSessions
             }
 
