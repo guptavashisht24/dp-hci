@@ -10,7 +10,7 @@ function HomePage() {
     const [showOnboard, toggleOnboard] = useState(false)
 
     useEffect(()=>{
-        if(!localStorage.getItem("show")){
+        if(1){
             setTimeout(()=>{
                 toggleOnboard(true)
             }, 1000)
