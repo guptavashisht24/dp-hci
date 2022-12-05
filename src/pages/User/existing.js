@@ -28,8 +28,8 @@ function SessionList() {
 
     const renderExistingSessions = () => {
         const existingSessions = sessionsData.existingSessions || []
-        const result = existingSessions.map((item) => (
-            <div className="sessionItem">
+        const result = existingSessions.map((item, index) => (
+            <div key={index} className="sessionItem">
                 <div className="flx">
                     <div className="w30">Topic:</div>
                     <div className="w70">{item.topic}</div>
@@ -53,8 +53,8 @@ function SessionList() {
 
     const renderUpcomingSessoins = () => {
         const upcomingSessions = sessionsData.upcomingSessions || []
-        const result = upcomingSessions.map((item) => (
-            <div className="sessionItem">
+        const result = upcomingSessions.map((item, index) => (
+            <div key={index} className="sessionItem">
                 <div className="flx">
                     <div className="w30">Topic:</div>
                     <div className="w70">{item.topic}</div>

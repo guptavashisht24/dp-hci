@@ -17,6 +17,8 @@ function SessionList() {
         time: '00:00',
         topic: ''
     })
+
+    const [showConfirm, updateConfirm] = useState(false)
     const params = useParams()
     const navigate = useNavigate()
     const [showData, noShowData] = useState(false)
@@ -41,6 +43,16 @@ function SessionList() {
             noShowData(true)
         }
     }, [])
+
+
+    useEffect(() => {
+        if (showConfirm) {
+            document.body.style.overflow = "hidden";
+        } else {
+            document.body.style.overflow = "";
+
+        }
+    }, [showConfirm])
 
 
     const onChangeValue = (event) => {
@@ -167,7 +179,7 @@ function SessionList() {
                         <span id="generic_error" style={{ color: 'red' }}></span>
                     </div>
                     <div className="flxBtn">
-                        <div className="buttons" onClick={() => { deleteSessions() }}>Cancel</div>
+                        <div className="buttons" onClick={() => { updateConfirm(true) }}>Cancel</div>
                         <div className="buttons" onClick={() => { updateSession() }}>Edit</div>
                     </div>
                 </form>
@@ -176,6 +188,25 @@ function SessionList() {
                 There is no data for this session
             </div>}
             <Menu />
+            {showConfirm && <><div className="overlay"></div>
+
+                <div className="onboardContent">
+                    <div className="onContnew">
+                        Are you sure you want to delete this entry ?
+                        This cannot be undone!
+
+                        <div className="next">
+                            {<div className="butn" onClick={() => {
+                                updateConfirm(false)
+                                deleteSessions()
+                            }} >Yes</div>}
+                            {<div className="butn" onClick={() => {
+                                updateConfirm(false)
+                            }}>No</div>}
+                        </div>
+                    </div>
+                </div>
+            </>}
         </div>
     )
 }
