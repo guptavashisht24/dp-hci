@@ -1,12 +1,6 @@
 import React, { useState } from "react";
 import './index.css'
 import { Link } from "react-router-dom";
-import MenuImg from '../../images/menu.png'
-import Home from '../../images/home.png'
-import Call from '../../images/call.png'
-import Heart from '../../images/heart.png'
-import About from '../../images/about.png'
-import Faq from '../../images/faq.png'
 
 
 

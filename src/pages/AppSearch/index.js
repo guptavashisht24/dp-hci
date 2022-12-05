@@ -65,7 +65,6 @@ function AppSearch() {
         setDisplay(false)
         updateLoaders(true)
         setTimeout(()=>{
-            console.log(search)
             if(search.toLowerCase() in data){
                 updateLoaders(false)
                 updateResult(data[search.toLowerCase()])

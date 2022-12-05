@@ -6,6 +6,7 @@ import Menu from '../../components/Menu'
 import DatePicker from "react-datepicker";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import { checkConflict } from "../../utils";
 
 
 import "react-datepicker/dist/react-datepicker.css";
@@ -27,9 +28,7 @@ function SessionList() {
         const data = JSON.parse(localStorage.getItem("data"))
         const { currentUser } = data
         const sessions = data[currentUser].sessions || []
-        console.log(sessions)
         const sessionsToFilter = sessions.filter((item) => (id == item.sessionid)) || []
-        console.log(sessionsToFilter)
         if (sessionsToFilter.length > 0) {
             const content = sessionsToFilter[0]
             updateValues({
@@ -54,6 +53,26 @@ function SessionList() {
 
     }
 
+    const deleteSessions = () => {
+        const { time, topic } = values
+        const data = JSON.parse(localStorage.getItem("data"))
+        const { currentUser } = data
+        const { id = -1 } = params
+        var editedSession = { sessionid: id, topic: values.topic, time: values.time, date: formatDate(values.date) };
+        const sessions = data[currentUser].sessions || []
+        const newSessions = sessions.filter((item) => item.sessionid != id).map(item => item);
+        const updatedObject = {
+            ...data,
+            [currentUser]: {
+                password: data[currentUser].password,
+                sessions: newSessions
+            }
+
+        }
+        localStorage.setItem("data", JSON.stringify(updatedObject))
+        navigate("/sessions")
+    }
+
     const updateSession = () => {
 
         const { time, topic } = values
@@ -71,6 +90,14 @@ function SessionList() {
         const { id = -1 } = params
         var editedSession = { sessionid: id, topic: values.topic, time: values.time, date: formatDate(values.date) };
         const sessions = data[currentUser].sessions || []
+        for (let i = 0; i < sessions.length; i++) {
+            if (sessions[i].sessionid != editedSession.sessionid) {
+                if (checkConflict(sessions[i].date, sessions[i].time, formatDate(values.date), values.time)) {
+                    document.getElementById('generic_error').innerHTML = "Time Conflict, please select another time slot";
+                    return
+                }
+            }
+        }
         const newSessions = sessions.map((item) => {
             if (item.sessionid == editedSession.sessionid) {
                 editedSession.volunteer_no = item.volunteer_no
@@ -82,7 +109,7 @@ function SessionList() {
         const updatedObject = {
             ...data,
             [currentUser]: {
-                password : data[currentUser].password,
+                password: data[currentUser].password,
                 sessions: newSessions
             }
 
@@ -102,7 +129,7 @@ function SessionList() {
         if (day.length < 2)
             day = '0' + day;
 
-        return [month,day,year].join('/');
+        return [month, day, year].join('/');
     }
 
     return (
@@ -136,8 +163,12 @@ function SessionList() {
                             <span id="err_topic" style={{ color: "red" }}></span>
                         </div>
                     </div>
-                    <div className="submitButton">
-                        <input type="button" value="SUBMIT" onClick={() => { updateSession() }}></input>
+                    <div className="tc">
+                        <span id="generic_error" style={{ color: 'red' }}></span>
+                    </div>
+                    <div className="flxBtn">
+                        <div className="buttons" onClick={() => { deleteSessions() }}>Cancel</div>
+                        <div className="buttons" onClick={() => { updateSession() }}>Edit</div>
                     </div>
                 </form>
             </div>}

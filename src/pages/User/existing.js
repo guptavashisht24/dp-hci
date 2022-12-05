@@ -3,19 +3,18 @@ import './index.css'
 import { Link } from "react-router-dom";
 import Header from '../../components/Header';
 import Menu from '../../components/Menu'
+import { useNavigate } from "react-router-dom";
 
 function SessionList() {
 
     const [sessionsData, updateSessions] = useState({})
+    const navigate = useNavigate()
 
 
     useEffect(() => {
         const data = JSON.parse(localStorage.getItem("data"))
         const { currentUser } = data
-        console.log(currentUser)
-        console.log(data)
         const sessions = data[currentUser].sessions || []
-        console.log(sessions)
         const upcomingSessions = sessions.filter((item) => ((new Date(`${item.date} ${item.time}`) - Date.now()) >= 0)) || []
         const existingSessions = sessions.filter((item) => {
             return ((new Date(`${item.date} ${item.time}`) - Date.now()) < 0)
@@ -72,12 +71,9 @@ function SessionList() {
                     <div className="w30">Link:</div>
                     <div className="w70">{item.link}</div>
                 </div>
-                <Link to ={`/edit/${item.sessionid}`}>
                 <div className="flxBtn">
-                    
-                <div className="buttons" onClick={()=>{}}>Edit</div>
+                    <div className="buttons" onClick={() => { navigate(`/edit/${item.sessionid}`) }}>Change</div>
                 </div>
-                </Link>
             </div>
         ))
         return result.length === 0 ? <div className="centerData">No Upcoming Sessions</div> : result
