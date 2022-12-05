@@ -4,6 +4,7 @@ import Header from '../../components/Header';
 import Menu from '../../components/Menu'
 import DatePicker from "react-datepicker";
 import { useNavigate } from "react-router-dom";
+import { checkConflict } from "../../utils";
 
 
 import "react-datepicker/dist/react-datepicker.css";
@@ -115,9 +116,18 @@ function SessionList() {
                         document.getElementById('error_pwd').innerHTML = "Incorrect Password";
                         return
                     } else {
+                        //Check if meetings overlap, [starttime, starttime+30]
+                        const updatedDate = formatDate(startDate)
+                        const currentSessions = data[phoneNumber].sessions
+                        for(let i = 0; i<currentSessions.length; i++){
+                            if(checkConflict(currentSessions[i].date, currentSessions[i].time, updatedDate, time)){
+                                document.getElementById('generic_error').innerHTML = "Time Conflict, please select another time slot";
+                                return 
+                            }
+                        }
                         const updatedSessions = [...data[phoneNumber].sessions, {
                             sessionid: `${sessionsVal + 1}${makeid(4)}`,
-                            date: formatDate(startDate),
+                            date: updatedDate,
                             topic: topic,
                             volunteer_no: 1,
                             time: time,
@@ -238,6 +248,9 @@ function SessionList() {
                         />
                         <span id="error_topic" style={{ color: 'red' }}></span>
                     </div>
+                </div>
+                <div className="tc">
+                <span id="generic_error" style={{ color: 'red' }}></span>
                 </div>
                 <div className="submit">
                     <input type="button" value="SUBMIT" onClick={addData}></input>

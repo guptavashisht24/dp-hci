@@ -17,7 +17,6 @@ import Registration from "./pages/Registration"
 
 function App() {
   const isMobile = useMediaQuery({ maxWidth: 480 })
-  console.log(isMobile)
   const [appsData, setAppsData] = React.useState([])
   React.useEffect(() => {
     fetch('./apps.json')

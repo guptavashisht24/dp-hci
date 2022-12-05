@@ -1,12 +1,6 @@
 import React, { useState } from "react";
 import './index.css'
 import { Link } from "react-router-dom";
-import MenuImg from '../../images/menu.png'
-import Home from '../../images/home.png'
-import Call from '../../images/call.png'
-import Heart from '../../images/heart.png'
-import About from '../../images/about.png'
-import Faq from '../../images/faq.png'
 
 
 
@@ -57,7 +51,7 @@ function Menu({ type }) {
 
                     <div className="menuDiv">
                         <Link to="/">
-                            <i class="bi bi-house-door-fill icon-style-footer"></i>
+                            <i onClick = {()=>{toggleMenu(false)}} class="bi bi-house-door-fill icon-style-footer"></i>
                             {/* <img src={Home} /> */}
                         </Link>
                     </div>

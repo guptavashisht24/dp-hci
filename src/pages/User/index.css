@@ -89,13 +89,14 @@
     font-size: 1.5rem;
     border: none;
     color: white;
-    width: 20%;
     text-align: center;
+    padding-left: 5%;
+    padding-right: 5%;
 }
 
 .flxBtn{
     display: flex;
-    justify-content: center;
+    justify-content:space-evenly;
     align-items: center;
     padding-top: 10px;
 }
@@ -109,5 +110,8 @@ input[type="text"] {
 }
 
 .pdt20{
+    padding-top: 20px;
+}
+.onContnew{
     padding-top: 20px;
 }
