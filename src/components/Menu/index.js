@@ -7,6 +7,7 @@ import Call from '../../images/call.png'
 import Heart from '../../images/heart.png'
 import About from '../../images/about.png'
 import Faq from '../../images/faq.png'
+import Header from '../../components/Header';
 
 
 
@@ -17,6 +18,7 @@ function Menu({ type }) {
         <div>
             
             {showMenu && <div className="menuBody">
+            <Header />
                 <div className="items">
                     <div><h1>Saved Videos</h1></div>
                     <div>

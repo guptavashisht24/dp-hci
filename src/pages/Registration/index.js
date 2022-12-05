@@ -24,6 +24,7 @@ function SessionList() {
         topic: ""
     })
 
+    
 
     const [data, setData] = useState([])
 
@@ -91,6 +92,15 @@ function SessionList() {
         }
         else if (password === "") {
             document.getElementById('error_pwd').innerHTML = "Password is required";
+        }
+        else if(password.match('/[A-Z]/g')){
+            document.getElementById('error_pwd').innerHTML="Password must have a uppercase letter"
+        }
+        else if(password.search('/[a-z]/g')){
+            document.getElementById('error_pwd').innerHTML="Password must have a lowercase letter"
+        }
+        else if(password.length<8){
+            document.getElementById('error_pwd').innerHTML="Password must be of minimum 8 characters"
         }
         else if (topic === "") {
             document.getElementById('error_topic').innerHTML = "Topic is required";
@@ -214,6 +224,7 @@ function SessionList() {
                             onChange={handle}
                         />
                         <span id="error_time" style={{ color: 'red' }}></span>
+                        
                     </div>
                 </div>
                 <div className="rows">
@@ -231,9 +242,13 @@ function SessionList() {
                     <div className="field">
                         <input type="password"
                             name='password'
+                            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
                             onChange={handle}
                         />
                         <span id="error_pwd" style={{ color: 'red' }}></span>
+                        <div id="message" style={{display:"block",fontSize:"15px"}}>
+                            <p>Password must contain a <b>lowercase</b> letter,a <b>uppercase</b> letter and minimum <b>8 characters</b></p>
+                        </div>
                     </div>
                 </div>
                 <div className="rows">
@@ -250,6 +265,7 @@ function SessionList() {
                     <input type="button" value="SUBMIT" onClick={addData}></input>
                 </div>
             </div>
+           
             <Menu />
         </div>
     )
