@@ -3,7 +3,9 @@
         {
             "title":"Walmart",
             "img":"https://cdn.dribbble.com/users/1796234/screenshots/15949756/walmart_4x.png",
-            "weburl":"https://www.walmart.com/"
+            "weburl":"https://www.walmart.com/",
+            "about" : "From grocery and entertainment to sporting goods and crafts, we provide the deep assortment that our customers appreciate",
+            "link" : "walmart"
         },
         {
             "title":"Kroger",

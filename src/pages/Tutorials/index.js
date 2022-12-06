@@ -6,6 +6,7 @@ import Microphone from '../../images/microphone.png'
 import YouTube from '../../images/youtube.png'
 import data from "../../Data/data2.json"
 
+
 const categories = [
     "Walmart",
     "Target",
@@ -54,6 +55,15 @@ function AppSearch() {
     const [search, setSearch] = useState("");
     const [loaders, updateLoaders] = useState(false)
     const [result, updateResult] = useState([])
+
+
+    useEffect(()=>{
+        const queryParams = new URLSearchParams(window.location.search)
+        const searchTerm = queryParams.get("query")
+        if(searchTerm){
+         setSearch(searchTerm)
+        }
+    },[])
 
     const SpeechRecognitionWorks = 'SpeechRecognition' in window || 'webkitSpeechRecognition' in window;
 
