@@ -44,7 +44,7 @@ function Menu({ type }) {
                 <div className="menuflex">
                     <div className="menuDiv">
                         <Link to="/contact">
-                            <i class="bi bi-headset icon-style-footer"></i>
+                            <i onClick = {()=>{toggleMenu(false)}} class="bi bi-headset icon-style-footer"></i>
                             {/* <img src={Call} /> */}
                         </Link>
                     </div>
