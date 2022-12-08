@@ -5,7 +5,7 @@ import Menu from '../../components/Menu'
 import DatePicker from "react-datepicker";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import { checkConflict } from "../../utils";
+import { checkConflict, generateDateFormat } from "../../utils";
 
 
 import "react-datepicker/dist/react-datepicker.css";
@@ -101,6 +101,12 @@ function SessionList() {
         const { id = -1 } = params
         var editedSession = { sessionid: id, topic: values.topic, time: values.time, date: formatDate(values.date) };
         const sessions = data[currentUser].sessions || []
+        debugger
+        if(generateDateFormat(formatDate(values.date), values.time) < (new Date())){
+            debugger
+            document.getElementById('generic_error').innerHTML = "Please select a future time slot";
+            return
+        }
         for (let i = 0; i < sessions.length; i++) {
             if (sessions[i].sessionid != editedSession.sessionid) {
                 if (checkConflict(sessions[i].date, sessions[i].time, formatDate(values.date), values.time)) {
