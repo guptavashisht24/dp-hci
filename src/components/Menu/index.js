@@ -11,6 +11,7 @@ function Menu({ type }) {
         <div>
 
             {showMenu && <div className="menuBody">
+                <div className="crossMenu" onClick = {()=>{toggleMenu(false)}}>X</div>
                 <div className="items">
                     <div><h1>Saved Videos</h1></div>
                     <div>
