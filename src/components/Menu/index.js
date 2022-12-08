@@ -4,9 +4,12 @@ import { Link } from "react-router-dom";
 
 
 
-function Menu({ type }) {
+function Menu({ type, home = "no", contact = "no" }) {
     const styleClassName = (type == "fixed") ? "fixedMenu" : "fixedMenu"
     const [showMenu, toggleMenu] = useState(false)
+    const menuCss = (showMenu)?"styleGrey":""
+    const homeCss = (home === "yes")?"styleGrey":""
+    const contactCss = (contact === "yes")?"styleGrey":""
     return (
         <div>
 
@@ -43,21 +46,21 @@ function Menu({ type }) {
             </div>}
             <div className={styleClassName}>
                 <div className="menuflex">
-                    <div className="menuDiv">
+                    <div className={`menuDiv ${contactCss}`}>
                         <Link to="/contact">
                             <i onClick = {()=>{toggleMenu(false)}} class="bi bi-headset icon-style-footer"></i>
                             {/* <img src={Call} /> */}
                         </Link>
                     </div>
 
-                    <div className="menuDiv">
+                    <div className={`menuDiv ${homeCss}`}>
                         <Link to="/">
                             <i onClick = {()=>{toggleMenu(false)}} class="bi bi-house-door-fill icon-style-footer"></i>
                             {/* <img src={Home} /> */}
                         </Link>
                     </div>
 
-                    <div className="menuDiv" onClick={() => { toggleMenu(!showMenu) }}>
+                    <div className={`menuDiv ${menuCss}`} onClick={() => { toggleMenu(!showMenu) }}>
                         <i class="bi bi-list icon-style-footer"></i>
                         {/* <img src={MenuImg} /> */}
                     </div>

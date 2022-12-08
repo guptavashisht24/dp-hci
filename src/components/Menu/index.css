@@ -85,3 +85,7 @@
     right: 20px;
     font-weight: bolder;
 }
+
+.styleGrey{
+    background-color: rgba(104, 124, 103, 0.16);
+}
