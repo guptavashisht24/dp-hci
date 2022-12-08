@@ -30,10 +30,23 @@ input[type=text]{
 .inputTxt{
     width : 50%;
 }
-.brandsCol{
- display: flex;
- justify-content: center;  
+.brandsColList{
  margin-top: 2vh; 
+ margin-left : 20px;
+ margin-right: 20px;
+ padding-bottom: 2vh;
+ border-bottom: solid 2px rgba(104, 124, 103, 0.16) ;
+}
+.desc{
+    padding-top: 5px;
+    font-size: 1.25rem;
+    font-weight: bold;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 .w20{
     width: 20%;
@@ -91,4 +104,18 @@ width: 90%;
     color:#000000 !important;
     font-size:35px !important;
     padding-left: 18px;
+}
+.icon{
+    padding-right: 10px;
+}
+.tutorials{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+}
+
+.contentLink{
+    color : #0d6efd;
+    text-decoration: underline;
 }
