@@ -4,7 +4,7 @@ import Header from '../../components/Header';
 import Menu from '../../components/Menu'
 import DatePicker from "react-datepicker";
 import { useNavigate } from "react-router-dom";
-import { checkConflict } from "../../utils";
+import { checkConflict, generateDateFormat } from "../../utils";
 
 
 import "react-datepicker/dist/react-datepicker.css";
@@ -55,24 +55,49 @@ function SessionList() {
     }
 
     const makeid = (length) => {
-        var result           = '';
-        var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+        var result = '';
+        var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
         var charactersLength = characters.length;
-        for ( var i = 0; i < length; i++ ) {
+        for (var i = 0; i < length; i++) {
             result += characters.charAt(Math.floor(Math.random() * charactersLength));
         }
         return result;
     }
 
-    const addData = (e) => {
+    const resetValidations = () => {
+            document.getElementById('error_fname').innerHTML = "";
         
+            document.getElementById('error_fname').innerHTML = "";
+        
+            document.getElementById('error_lname').innerHTML = "";
+        
+            document.getElementById('error_lname').innerHTML = "";
+       
+            document.getElementById('error_time').innerHTML = "";
+       
+            document.getElementById('error_phno').innerHTML = "";
+      
+            document.getElementById('error_phno').innerHTML = "";
+        
+            document.getElementById('error_pwd').innerHTML = "";
+       
+            document.getElementById('error_topic').innerHTML = "";
+    }
+
+    const addData = (e) => {
+
         e.preventDefault();
+        resetValidations();
         const { firstName, lastName, time, phoneNumber, password, topic, startDate } = formData
         if (firstName === "") {
             document.getElementById('error_fname').innerHTML = "First Name is required";
+        } else if (firstName.match(/\d/)) {
+            document.getElementById('error_fname').innerHTML = "Name cannot have numbers";
         }
         else if (lastName === "") {
             document.getElementById('error_lname').innerHTML = "Last Name is required";
+        } else if (lastName.match(/\d/)) {
+            document.getElementById('error_lname').innerHTML = "Name cannot have numbers";
         }
         else if (time === "") {
             document.getElementById('error_time').innerHTML = "Time is required";
@@ -83,13 +108,18 @@ function SessionList() {
         else if (phoneNumber.length < 10 || phoneNumber.length > 10) {
             document.getElementById('error_phno').innerHTML = "invalid phone number";
         }
-        else if (password === "") {
-            document.getElementById('error_pwd').innerHTML = "Password is required";
+        else if (password === "" || password.length <6) {
+            document.getElementById('error_pwd').innerHTML = "Password needs atleast 6 characters";
         }
         else if (topic === "") {
             document.getElementById('error_topic').innerHTML = "Topic is required";
         }
         else {
+            const date = generateDateFormat(formatDate(startDate), time)
+            if(date < (new Date())){
+                document.getElementById('generic_error').innerHTML = "Please select a future time slot";
+                return
+            }
             if (!localStorage.getItem('data')) {
                 const newObject = {
                     currentUser: `${phoneNumber}`,
@@ -101,7 +131,7 @@ function SessionList() {
                             topic: topic,
                             volunteer_no: 1,
                             time: time,
-                            link : `zoom.us/${makeid(5)}`
+                            link: `zoom.us/${makeid(5)}`
                         }]
                     }
                 }
@@ -119,10 +149,10 @@ function SessionList() {
                         //Check if meetings overlap, [starttime, starttime+30]
                         const updatedDate = formatDate(startDate)
                         const currentSessions = data[phoneNumber].sessions
-                        for(let i = 0; i<currentSessions.length; i++){
-                            if(checkConflict(currentSessions[i].date, currentSessions[i].time, updatedDate, time)){
+                        for (let i = 0; i < currentSessions.length; i++) {
+                            if (checkConflict(currentSessions[i].date, currentSessions[i].time, updatedDate, time)) {
                                 document.getElementById('generic_error').innerHTML = "Time Conflict, please select another time slot";
-                                return 
+                                return
                             }
                         }
                         const updatedSessions = [...data[phoneNumber].sessions, {
@@ -131,13 +161,13 @@ function SessionList() {
                             topic: topic,
                             volunteer_no: 1,
                             time: time,
-                            link : `zoom.us/${makeid(5)}`
+                            link: `zoom.us/${makeid(5)}`
                         }]
                         const updatedObject = {
                             ...data,
                             currentUser: `${phoneNumber}`,
                             [`${phoneNumber}`]: {
-                                password : data[phoneNumber].password,
+                                password: data[phoneNumber].password,
                                 "sessions": updatedSessions
                             }
                         }
@@ -152,14 +182,14 @@ function SessionList() {
                         ...data,
                         currentUser: `${phoneNumber}`,
                         [`${phoneNumber}`]: {
-                            password : password,
+                            password: password,
                             "sessions": [{
                                 sessionid: `${sessionsVal + 1}${makeid(4)}`,
                                 date: formatDate(startDate),
                                 topic: topic,
                                 volunteer_no: 1,
                                 time: time,
-                                link : `zoom.us/${makeid(5)}`
+                                link: `zoom.us/${makeid(5)}`
                             }]
                         }
                     }
@@ -182,6 +212,7 @@ function SessionList() {
                         <input type="text"
                             name='firstName'
                             onChange={handle}
+                            pattern="[a-zA-Z]*"
                         />
                         <span id="error_fname" style={{ color: 'red' }}></span>
                     </div>
@@ -250,7 +281,7 @@ function SessionList() {
                     </div>
                 </div>
                 <div className="tc">
-                <span id="generic_error" style={{ color: 'red' }}></span>
+                    <span id="generic_error" style={{ color: 'red' }}></span>
                 </div>
                 <div className="submit">
                     <input type="button" value="SUBMIT" onClick={addData}></input>

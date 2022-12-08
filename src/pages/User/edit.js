@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import './index.css'
-import { Link } from "react-router-dom";
 import Header from '../../components/Header';
 import Menu from '../../components/Menu'
 import DatePicker from "react-datepicker";
@@ -179,7 +178,7 @@ function SessionList() {
                         <span id="generic_error" style={{ color: 'red' }}></span>
                     </div>
                     <div className="flxBtn">
-                        <div className="buttons" onClick={() => { updateConfirm(true) }}>Cancel</div>
+                        <div className="buttons" onClick={() => { updateConfirm(true) }}>Delete</div>
                         <div className="buttons" onClick={() => { updateSession() }}>Edit</div>
                     </div>
                 </form>
