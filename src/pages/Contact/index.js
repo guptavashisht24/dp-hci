@@ -29,7 +29,7 @@ function HomePage() {
                     </div>
                 </div>
             </div>
-            <Menu />
+            <Menu contact = {"yes"} home = {"no"}/>
         </div>
     )
 }
