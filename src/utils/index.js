@@ -1,7 +1,7 @@
 export const generateDateFormat = (date, time) => {
     const userStartDate = date.split("/")
     const userStartTime = time.split(":")
-    const userTimeString = `${userStartDate[2]}-${userStartDate[0]}-${userStartDate[1]}T${userStartTime[0]}:${userStartTime[1]}Z`
+    const userTimeString = `${userStartDate[2]}-${userStartDate[0]}-${userStartDate[1]}T${userStartTime[0]}:${userStartTime[1]}-0600`
     return new Date(userTimeString)
 }
 

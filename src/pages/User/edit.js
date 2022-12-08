@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
 import './index.css'
-import { Link } from "react-router-dom";
 import Header from '../../components/Header';
 import Menu from '../../components/Menu'
 import DatePicker from "react-datepicker";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import { checkConflict } from "../../utils";
+import { checkConflict, generateDateFormat } from "../../utils";
 
 
 import "react-datepicker/dist/react-datepicker.css";
@@ -102,6 +101,10 @@ function SessionList() {
         const { id = -1 } = params
         var editedSession = { sessionid: id, topic: values.topic, time: values.time, date: formatDate(values.date) };
         const sessions = data[currentUser].sessions || []
+        if(generateDateFormat(formatDate(values.date), values.time) < (new Date())){
+            document.getElementById('generic_error').innerHTML = "Please select a future time slot";
+            return
+        }
         for (let i = 0; i < sessions.length; i++) {
             if (sessions[i].sessionid != editedSession.sessionid) {
                 if (checkConflict(sessions[i].date, sessions[i].time, formatDate(values.date), values.time)) {
@@ -179,7 +182,7 @@ function SessionList() {
                         <span id="generic_error" style={{ color: 'red' }}></span>
                     </div>
                     <div className="flxBtn">
-                        <div className="buttons" onClick={() => { updateConfirm(true) }}>Cancel</div>
+                        <div className="buttons" onClick={() => { updateConfirm(true) }}>Delete</div>
                         <div className="buttons" onClick={() => { updateSession() }}>Edit</div>
                     </div>
                 </form>
