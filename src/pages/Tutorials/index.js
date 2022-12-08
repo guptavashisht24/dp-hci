@@ -1,10 +1,11 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import './index.css'
 import Header from '../../components/Header';
 import Menu from '../../components/Menu'
 import Microphone from '../../images/microphone.png'
 import YouTube from '../../images/youtube.png'
 import data from "../../Data/data2.json"
+import { isCompositeComponent } from "react-dom/test-utils";
 
 
 const categories = [
@@ -57,13 +58,13 @@ function AppSearch() {
     const [result, updateResult] = useState([])
 
 
-    useEffect(()=>{
+    useEffect(() => {
         const queryParams = new URLSearchParams(window.location.search)
         const searchTerm = queryParams.get("query")
-        if(searchTerm){
-         setSearch(searchTerm)
+        if (searchTerm) {
+            setSearch(searchTerm)
         }
-    },[])
+    }, [])
 
     const SpeechRecognitionWorks = 'SpeechRecognition' in window || 'webkitSpeechRecognition' in window;
 
@@ -87,13 +88,13 @@ function AppSearch() {
         recognition.start();
     }
 
-    useEffect(()=>{
-        if(!display && search)
+    useEffect(() => {
+        if (!display && search)
             fetchData()
     }, [display, search])
 
     const renderLoaders = () => {
-        return(
+        return (
             <div>
                 <div className="loaderDiv">
 
@@ -112,45 +113,62 @@ function AppSearch() {
     const fetchData = () => {
         setDisplay(false)
         updateLoaders(true)
-        setTimeout(()=>{
-            if(search.toLowerCase() in data){
+        setTimeout(() => {
+            if (search.toLowerCase() in data) {
+                //SET ITEM IN LOCAL STORAGE
+                if (localStorage.getItem("tutorials")) {
+                    const data = JSON.parse(localStorage.getItem("tutorials"))
+                    if (data.length < 3 && !data.includes(search.toLocaleLowerCase())) {
+                        data.unshift(search.toLocaleLowerCase())
+                    } else {
+                        if (data.length == 3 && !data.includes(search.toLocaleLowerCase())) {
+                            data.pop()
+                            data.unshift(search.toLocaleLowerCase())
+                        }
+                    }
+                    localStorage.setItem("tutorials", JSON.stringify(data))
+                } else {
+                    const data = []
+                    data.unshift(search.toLocaleLowerCase())
+                    localStorage.setItem("tutorials", JSON.stringify(data))
+                }
                 updateLoaders(false)
                 updateResult(data[search.toLowerCase()].videourl)
             } else {
                 updateLoaders(false)
                 updateResult([])
             }
-        },2000)
+        }, 2000)
     }
 
-    const renderResults = () =>{
-       if(result.length>0){
-        const results = result.map((value, index)=>{
-            return (
-                <div key={index} className="actionsTutorials">
-                    <a href={value.link}>
-                        <div className="list">
-                            <div className="icon">
-                            <i class="bi bi-youtube icon-style-youtube"></i>
-                                {/* <img src={YouTube} /> */}
+    const renderResults = () => {
+        if (result.length > 0) {
+            const results = result.map((value, index) => {
+                return (
+                    <div key={index} className="actionsTutorials">
+                        <a href={value.link}>
+                            <div className="list">
+                                <div className="icon">
+                                    <i class="bi bi-youtube icon-style-youtube"></i>
+                                    {/* <img src={YouTube} /> */}
+                                </div>
+                                <div className="content">
+                                    {value.title}
+                                </div>
                             </div>
-                            <div className="content">
-                                {value.title}
-                            </div>
-                        </div>
-                    </a>
-                </div>
-            )
-        })
+                        </a>
+                    </div>
+                )
+            })
 
-        return results
-       } else {
-        if(search.length===0){
-            return <div className="failText"> Which tutorial are you looking for today ?</div>
+            return results
         } else {
-            return <div className="failText">Hmm, Tutorials not found :/ Try Something else</div>
+            if (search.length === 0) {
+                return <div className="failText"> Which tutorial are you looking for today ?</div>
+            } else {
+                return <div className="failText">Hmm, Tutorials not found :/ Try Something else</div>
+            }
         }
-       }
     }
     return (
         <div className="pb8">
@@ -158,12 +176,12 @@ function AppSearch() {
             <div className="">
                 <div className="search" onClick={() => setDisplay(!display)}>
                     <div className="w75">
-                        <form onSubmit={(e)=>{e.preventDefault();fetchData()}}>
-                        <input type="text" placeholder="Type Something" value={search} onChange={event => setSearch(event.target.value)}></input>
+                        <form onSubmit={(e) => { e.preventDefault(); fetchData() }}>
+                            <input type="text" placeholder="Type Something" value={search} onChange={event => setSearch(event.target.value)}></input>
                         </form>
                     </div>
-                    {SpeechRecognitionWorks && <div className="w20" onClick={()=>{GetSpeech()}}>
-                    <i class="bi bi-mic-fill icon-style-microphone"></i>
+                    {SpeechRecognitionWorks && <div className="w20" onClick={() => { GetSpeech() }}>
+                        <i class="bi bi-mic-fill icon-style-microphone"></i>
                         {/* <img src={Microphone} /> */}
                     </div>}
                 </div>
@@ -174,7 +192,7 @@ function AppSearch() {
                         .map((value, i) => {
                             return (
                                 <div
-                                    onClick={() => { setSearch(value); setDisplay(false);}}
+                                    onClick={() => { setSearch(value); setDisplay(false); }}
                                     className="option"
                                     key={i}
                                     tabIndex="0"
@@ -186,8 +204,8 @@ function AppSearch() {
                 </div>}
             </div>
             <div className="results">
-            {loaders && renderLoaders()}
-            {!loaders && renderResults()}
+                {loaders && renderLoaders()}
+                {!loaders && renderResults()}
             </div>
             <Menu type="fixed" />
         </div>

@@ -32,3 +32,32 @@
     font-size:40px !important;
 
 }
+.rviewed{
+    font-size: 1.5rem;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+.introSectionviewed{
+    height: 35vh;
+    font-size: 2.25rem;
+    padding: 20px;
+    display: flex;
+    flex-flow: wrap;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.w100{
+    width: 100%;
+}
+
+.tutorialsHome {
+    display: flex;
+    align-items: center;
+    font-size: 1.25rem;
+    padding-left: 12px;
+    padding-left : 13%;
+
+}
