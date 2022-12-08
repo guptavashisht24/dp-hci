@@ -101,9 +101,7 @@ function SessionList() {
         const { id = -1 } = params
         var editedSession = { sessionid: id, topic: values.topic, time: values.time, date: formatDate(values.date) };
         const sessions = data[currentUser].sessions || []
-        debugger
         if(generateDateFormat(formatDate(values.date), values.time) < (new Date())){
-            debugger
             document.getElementById('generic_error').innerHTML = "Please select a future time slot";
             return
         }
