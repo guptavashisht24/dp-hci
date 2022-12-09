@@ -103,7 +103,7 @@ function HomePage() {
                     </Link>
                 </div>
             </div>
-            <Menu />
+            <Menu contact = {"no"} home = {"yes"} />
         </div>
     )
 }
